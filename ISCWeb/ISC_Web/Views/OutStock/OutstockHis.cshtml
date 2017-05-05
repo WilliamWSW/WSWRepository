@@ -1,0 +1,225 @@
+﻿@model PagedList.IPagedList<ISC_Web.ViewModels.VM_OutStockHis>
+@using PagedList.Mvc;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/jquery-1.12.3.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <script src="~/Scripts/moment-with-locales.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <!--[if lte IE 9]>
+    <script src="~/Scripts/respond.min.js"></script>
+    <script src="~/Scripts/html5shiv.min.js"></script>
+    <![endif]-->
+    <!--[if gte IE 9]>
+        <script src="~/Scripts/jquery-3.2.0.js"></script>
+    <![endif]-->
+
+    <title>Index</title>
+</head>
+<body style="overflow:auto">
+    <div class="container-fluid">
+        <div id="query_hint" class="query_hint">
+            <img src="~/img/wait.gif" />正在查询，请稍等...
+        </div>
+        <div class="panel panel-default" style="margin-top:8px">
+            <div class="panel-heading">
+                @using (Html.BeginForm("OutstockHis", "OutStock", FormMethod.Get))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <label id="lblirsTerminalD">货柜号:</label>
+                            <input id="txtirsterminalid_input" name="txtirsterminalid_input" class="form-control input-sm" type="text" placeholder="1,2,3" style="width:60px" value="@ViewBag.TerminalID" />
+                        </div> &nbsp; &nbsp;
+                        <div class="form-group">
+                            <label id="lblirsGoodsCode">商品编号:</label>
+                            <input type="text" id="txtirsGoodsCode" name="txtirsGoodsCode" class="form-control input-sm" placeholder="例如:1000369995" style="width:130px" value="@ViewBag.GoodsID" />
+                        </div>&nbsp; &nbsp;
+                        <div class="form-group">
+                            <label id="lblirsGoodsCode">商品名称:</label>
+                            <input type="text" id="txtirsGoodsName" name="txtirsGoodsName" class="form-control input-sm" placeholder="例如:感冒清颗粒" style="width:130px" value="@ViewBag.GoodsName" />
+                        </div>&nbsp; &nbsp;
+                        <div class="form-group">
+                            <label>开始时间：</label>
+                            <!--指定 date标记-->
+                            <div class='input-group date' id='txtirsdatetimepicker1'>
+                                <input type='text' class="form-control input-sm" placeholder="年-月-日" name="txtirsdatetimepicker1" style="width:110px" value="@ViewBag.StartTime" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div> &nbsp; &nbsp;
+                        <div class="form-group">
+                            <label>结束时间：</label>
+                            <!--指定 date标记-->
+                            <div class='input-group date' id='txtirsdatetimepicker2'>
+                                <input type='text' class="form-control input-sm" placeholder="年-月-日" name="txtirsdatetimepicker2" style="width:110px" value="@ViewBag.EndTime" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-screenshot"></span>
+                                </span>
+                            </div>
+                        </div>
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <div class="form-group">
+                            <input type="submit" id="btnirssearch" value="查  询"  onclick="show_query_hint()"/>
+
+                            <a id="btnirssearch1" tabindex="0" class="btn btn-primary hidden" role="button" data-toggle="popover" onclick="callbtnirssearch()"
+                               data-trigger="focus" title="小秘书" data-content="查询的时候如果加上货柜号,查询的速度会变快哦">查  询</a>
+                        </div>
+                    </div>
+
+                }
+            </div>
+            <div class="panel-body">
+
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered table-hover" align="center" style="white-space:nowrap;">
+                        <thead style="background: #EEEEEE;">
+                            <tr>
+                                <th class="text-center">订单号</th>
+                                <th class="text-center">商品名称</th>
+                                <th class="text-center">商品编码</th>
+                                <th class="text-center">批次号</th>
+                                <th class="text-center">过期时间</th>
+                                <th class="text-center">生产日期</th>
+                                <th class="text-center">订单数量</th>
+                                <th class="text-center">实际数量</th>
+                                <th class="text-center">RFID序号</th>
+                                <th class="text-center">货位</th>
+                                <th class="text-center">状态</th>
+                                <th class="text-center">操作人员</th>
+                                <th class="text-center">操作时间</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodytable">
+                            @if (Model.Count() == 0)
+                            {
+                                <tr>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                </tr>
+                            }
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(model => item.orderID)</td>
+                                    <td>@Html.DisplayFor(model => item.goodsName)</td>
+                                    <td>@Html.DisplayFor(model => item.goodsID)</td>
+                                    <td>@Html.DisplayFor(model => item.batchNo)</td>
+                                    <td>@Html.DisplayFor(model => item.expiryDate)</td>
+                                    <td>@Html.DisplayFor(model => item.productDate)</td>
+                                    <td>@Html.DisplayFor(model => item.orderNum)</td>
+                                    <td>@Html.DisplayFor(model => item.actualNum)</td>
+                                    <td>@Html.DisplayFor(model => item.RFIDCode)</td>
+                                    <td>@Html.DisplayFor(model => item.locatorID)</td>
+
+                                    @if (item.status == "0")
+                                    {
+                                        <td>新建</td>
+                                    }
+                                    else
+                                    if (item.status == "1")
+                                    {
+                                        <td>部分完成</td>
+                                    }
+                                    else
+                                    if (item.status == "2")
+                                    {
+                                        <td>完成</td>
+                                    }
+                                    <td>@Html.DisplayFor(model => item.updateMan)</td>
+                                    <td>@Html.DisplayFor(model => item.updateTime)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div style="position:fixed;height:60px;bottom:0px;">
+                <form class="form-inline">
+
+                    <div class="form-group">
+                        @Html.PagedListPager(Model, page => Url.Action("OutstockHis", new
+                   {
+
+                       page,
+                       txtirsterminalid_input = ViewBag.TerminalID,
+                       txtirsGoodsCode = ViewBag.GoodsID,
+                       txtirsdatetimepicker1 = ViewBag.StartTime,
+                       txtirsdatetimepicker2 = ViewBag.EndTime
+                   })
+, new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 22 })
+                    </div>&nbsp;&nbsp;
+                    <div class="form-group">
+                        总记录数:@Model.TotalItemCount 行
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            var picker1 = $('#txtirsdatetimepicker1').datetimepicker({
+                format: 'YYYY-MM-DD',
+                locale: moment.locale('zh-cn'),
+                //minDate: '2016-7-1'
+            });
+
+            var picker2 = $('#txtirsdatetimepicker2').datetimepicker({
+                format: 'YYYY-MM-DD',
+                locale: moment.locale('zh-cn')
+            });
+            //动态设置最小值
+            picker1.on('dp.change', function (e) {
+                picker2.data('DateTimePicker').minDate(e.date);
+            });
+            //动态设置最大值
+            picker2.on('dp.change', function (e) {
+                picker1.data('DateTimePicker').maxDate(e.date);
+            });
+        });
+    </script>
+   
+</body>
+</html>
+<script type="text/javascript">
+
+    //页面加载完成之后去掉Loading
+    $(document).ready(function () {
+        // parent.frames[0].queryHintCallback();
+        queryHintCallback();
+    });
+
+function show_query_hint(){
+    var query_hint = document.getElementById("query_hint");
+    query_hint.style.display="block";
+}
+
+
+
+function queryHintCallback(){
+    var query_hint = document.getElementById("query_hint");
+    query_hint.style.display="none";
+}
+</script>

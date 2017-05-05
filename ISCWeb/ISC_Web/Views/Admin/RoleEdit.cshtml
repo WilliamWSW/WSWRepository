@@ -1,0 +1,285 @@
+﻿@model ISC_Web.Models.sys_Role
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-duallistbox.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.12.3.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery.bootstrap-duallistbox.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <ul id="myTabs" class="nav nav-tabs " role="tablist" style="margin:10px">
+            <li role="presentation" class="active">
+                <a href="#rolemanagement" id="general-tab" role="tab" data-toggle="tab">角色管理</a>
+            </li>
+            <li role="presentation" class="">
+                <a href="#roleuser" role="tab" id="member-tab" data-toggle="tab">成员管理</a>
+            </li>
+            <li role="presentation" class="">
+                <a href="#permission" role="tab" id="permission-tab" data-toggle="tab">权限管理</a>
+            </li>
+        </ul>
+
+        @using (Html.BeginForm("RoleEdit", "Admin", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div id="myTabContent" class="tab-content">
+                <div role="tabpanel" class="tab-pane fade active in" id="rolemanagement">
+                    <div class="panel panel-default" style="margin:10px">
+                        <div class="panel panel-heading">
+                            <h4 class="text-center"><strong>角色信息编辑</strong></h4>
+                        </div>
+
+                        <div class="panel panel-body">
+
+                            <div class="row">
+                                <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                                    <strong>角色名称:</strong>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+                                    @Html.TextBoxFor(model => model.roleName, new { @required = true })
+                                </div>
+                                <div class="col-xs-1 col-sm-1 col-md-1 text-right">
+                                    <strong>角色序号:</strong>
+                                </div>
+                                <div class="col-xs-5 col-sm-5 col-md-5 text-left">
+                                    @Html.TextBoxFor(model => model.roleID, new { @required = true, @readonly = true })
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="row hidden">
+                                <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                                    <strong>编辑人员:</strong>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+                                    @Html.TextBoxFor(model => model.updateMan, new { @Value = @User.Identity.Name, @readonly = true })
+                                </div>
+                                <div class="col-xs-1 col-sm-1 col-md-1 text-right">
+                                    <strong>编辑时间:</strong>
+                                </div>
+                                <div class="col-xs-5 col-sm-5 col-md-5 text-left">
+                                    @Html.TextBoxFor(model => model.updateTime, new { @Value = DateTime.Now.ToString(), @readonly = true })
+                                </div>
+                                <div>
+
+                                    <input type="text" id="screen" name="screen" value="@ViewBag.Screen" class="hidden" />
+                                    <input type="text" id="valid" name="valid" value="1" class="hidden" />
+                                    <input type="text" id="search" name="search" value="@ViewBag.Search" class="hidden" />
+                                    <input type="text" id="filter" name="filter" value="@ViewBag.Filter" class="hidden" />
+                                    <input type="text" id="pagenum" name="pagenum" value="@ViewBag.PageNum" class="hidden" />
+                                </div>
+                            </div>
+                            <br />
+
+                            <br /><br /><br /><hr />
+
+                            <div>
+
+                                <input type="submit" id="btnrmsave" value="提交" class="btn btn-default hidden" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div role="tabpanel" class="tab-pane fade" id="roleuser">
+                    <div>
+                        <div>
+                            <div class="panel panel-default" style="margin:10px">
+                                <div class="panel panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6 text-center">
+                                            <h4>用户列表:</h4>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 text-center">
+                                            <h4>
+                                                @Model.roleName:
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                   
+                                    <div class="col-xs-12 col-sm-12 col-md-12" id="roleuserListBox">
+                                        @Html.ListBox("nameList")
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+
+
+                <div role="tabpanel" class="tab-pane fade" id="permission">
+                    <div>
+                        <div>
+                            <div class="panel panel-default" style="margin:10px">
+                                <div class="panel panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6 text-center">
+                                            <h4>权限列表:</h4>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 text-center">
+                                            <h4>
+                                                @Model.roleName:
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-xs-12 col-sm-12 col-md-12" id="permissionListBox">
+                                        @Html.ListBox("moduleList")
+                                    </div>
+
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        }
+        <div style="position:fixed;height:90px;bottom:0px;">
+            <hr />
+            &nbsp; &nbsp;
+            @Html.ActionLink("返  回", "Role",
+       new
+       {
+           id = ViewBag.Screen,
+           txtrmsearch = ViewBag.Search,
+           page = ViewBag.PageNum,
+           goback = 1
+       }, new { @class = "btn btn btn-default", @id = "btnrmback" })
+            <button class="btn btn-default hidden" data-toggle="modal" data-target="#myModal">
+                返回上一级
+            </button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-default" id="btnrmsave1" onclick="savebtn()">
+                保 存
+            </button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="返回确认" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <strong class="modal-title text-primary" id="myModalLabel">
+                        操作确认
+                    </strong>
+                </div>
+                <div class="modal-body ">
+                    返回上一级界面吗?
+                </div>
+                <div class="modal-footer">
+
+                    @Html.ActionLink("确 认", "Department",
+       new
+       {
+           id = ViewBag.Screen,
+           screen = ViewBag.Screen,
+           Hisorder = ViewBag.Order,
+           search = ViewBag.Search,
+           filter = ViewBag.Filter,
+           page = ViewBag.PageNum,
+           goback = 1
+       }, new { @class = "btn btn btn-default" })
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        取&nbsp;消
+                    </button>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+
+    <script type="text/javascript">
+        function centerModals() {
+            $('#myModal').each(function (i) {
+                var $clone = $(this).clone().css('display', 'block').appendTo('body');
+                var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 2);
+                top = top > 0 ? top : 0;
+                $clone.remove();
+                $(this).find('.modal-content').css("margin-top", top);
+            });
+        };
+    </script>
+
+    <script type="text/javascript">
+        $(function () { $('#myModal').on('show.bs.modal', centerModals) });
+    </script>
+    <script>
+        function savebtn() { document.getElementById("btnrmsave").click(); };
+        //document.getElementById("save").addEventListener('click', function(){document.getElementById("EditDepartment").click();}, false);
+        var userList = $('select[name="nameList"]').bootstrapDualListbox({
+            //nonSelectedListLabel: 'Non-selected',
+            //selectedListLabel: 'Selected',
+            preserveSelectionOnMove: 'moved',
+            moveOnSelect: false,
+            filterTextClear: '显示全部',
+            filterPlaceHolder: '添加过滤条件',
+            moveSelectedLabel: '移动选中项',
+            moveAllLabel: '移动全部',
+            removeSelectedLabel: '移除选中项',
+            removeAllLabel: '移除全部',
+            infoText: '总记录数: {0}',
+            infoTextFiltered: '<span class="label label-warning">已过滤</span> {0} 共有 {1}',
+            infoTextEmpty: '空列表'
+        });
+
+
+        userList.bootstrapDualListbox("refresh", false)
+        if (parseInt(@ViewBag.Screen) <= 667) {
+            $("#bootstrap-duallistbox-nonselected-list_nameList").css("height", "200px");
+            $("#bootstrap-duallistbox-selected-list_nameList").css("height", "200px");
+        } else {
+            $("#bootstrap-duallistbox-nonselected-list_nameList").css("height", "380px");
+            $("#bootstrap-duallistbox-selected-list_nameList").css("height", "380px");
+        }
+
+
+        var moduleList = $('select[name="moduleList"]').bootstrapDualListbox({
+            //nonSelectedListLabel: 'Non-selected',
+            //selectedListLabel: 'Selected',
+            preserveSelectionOnMove: 'moved',
+            moveOnSelect: false,
+            filterTextClear: '显示全部',
+            filterPlaceHolder: '添加过滤条件',
+            moveSelectedLabel: '移动选中项',
+            moveAllLabel: '移动全部',
+            removeSelectedLabel: '移除选中项',
+            removeAllLabel: '移除全部',
+            infoText: '总记录数: {0}',
+            infoTextFiltered: '<span class="label label-warning">已过滤</span> {0} 共有 {1}',
+            infoTextEmpty: '空列表'
+        });
+
+        moduleList.bootstrapDualListbox("refresh", false)
+        if (parseInt(@ViewBag.Screen) <= 667) {
+            $("#bootstrap-duallistbox-nonselected-list_moduleList").css("height", "200px");
+            $("#bootstrap-duallistbox-selected-list_moduleList").css("height", "200px");
+        } else {
+            $("#bootstrap-duallistbox-nonselected-list_moduleList").css("height", "380px");
+            $("#bootstrap-duallistbox-selected-list_moduleList").css("height", "380px");
+        }
+    </script>
+</body>
+</html>

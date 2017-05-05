@@ -1,0 +1,682 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="storage_newModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="bas_Department">
+    <Key>
+      <PropertyRef Name="deptID" />
+    </Key>
+    <Property Name="deptID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="deptName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="extDeptID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="valid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="bas_Goods">
+    <Key>
+      <PropertyRef Name="goodsID" />
+    </Key>
+    <Property Name="goodsID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="extGoodsID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="goodsName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tradeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="factory" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="spec" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="unit" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="spellCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="goodsType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="extGoodsType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="goodsCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="supervisionCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="valid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="bas_Locator">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="locatorID" />
+    </Key>
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="locatorID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="locatorName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="lockType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="isMulti" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="isMixBatch" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="locatorType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="cubage" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="valid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="bas_LocatorGoods">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="locatorID" />
+      <PropertyRef Name="goodsID" />
+      <PropertyRef Name="batchNo" />
+    </Key>
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="locatorID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="extLocatorID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="goodsID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="batchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="maxNum" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="minNum" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="bas_LocatorGoods_Test">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="locatorID" />
+      <PropertyRef Name="goodsID" />
+      <PropertyRef Name="batchNo" />
+    </Key>
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="locatorID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="extLocatorID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="goodsID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="batchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="maxNum" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="minNum" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="bas_User">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="loginName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userPwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="spellCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="roleID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="userCard" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="telephone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="deptID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="extUserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="valid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="bas_UserFinger">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="userID" />
+      <PropertyRef Name="fingerID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fingerID" Type="Int32" Nullable="false" />
+    <Property Name="finger" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="bas_UserLocator">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="locatorID" />
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="locatorID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="valid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="biz_GoodsAdjust">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="adjustID" />
+    </Key>
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="adjustID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="goodsID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="batchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="type" Type="Int32" Nullable="false" />
+    <Property Name="RFID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="barCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="locatorID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="newLocatorID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="biz_GoodsLog">
+    <Key>
+      <PropertyRef Name="logID" />
+    </Key>
+    <Property Name="logID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="operationtype" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="goodsID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="batchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="expiryDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="productDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="locatorID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RFID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="barCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="actualNum" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="operator1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="operator2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="operator3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="startTime" Type="DateTime" Precision="3" />
+    <Property Name="endTime" Type="DateTime" Precision="3" />
+    <Property Name="orderID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="detailID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="biz_InStock">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="orderID" />
+    </Key>
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="orderID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="extOrderID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="createTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AddtionID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="biz_InStockDt">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="orderID" />
+      <PropertyRef Name="detailID" />
+    </Key>
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="orderID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="detailID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="goodsID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="batchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="expiryDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="productDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="orderNum" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="actualNum" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="RFIDCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="barcode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="locatorID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="updateTime" Type="DateTime" Precision="3" />
+    <Property Name="outOrderID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="biz_InStockDt_Test">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="orderID" />
+      <PropertyRef Name="detailID" />
+    </Key>
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="orderID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="detailID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="goodsID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="batchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="expiryDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="productDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="orderNum" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="actualNum" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="RFIDCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="barcode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="locatorID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="updateTime" Type="DateTime" Precision="3" />
+    <Property Name="outOrderID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="biz_Inventory">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="orderID" />
+    </Key>
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="orderID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="extOrderID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="createTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="biz_InventoryDt">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="orderID" />
+      <PropertyRef Name="detailID" />
+    </Key>
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="orderID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="detailID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="goodsID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="batchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="expiryDate" Type="DateTime" Precision="3" />
+    <Property Name="productDate" Type="DateTime" Precision="3" />
+    <Property Name="orderNum" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="actualNum" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="RFIDCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="barcode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="locatorID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="biz_LossReport">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="orderID" />
+      <PropertyRef Name="detailID" />
+    </Key>
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="orderID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="detailID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="goodsID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="batchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="expiryDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="productDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="lossNum" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="RFIDCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="barcode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="locatorID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="biz_OutStock">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="orderID" />
+    </Key>
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="orderID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="extOrderID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="createTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AddtionID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ScanCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="biz_OutStockAddtion">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="addtionID" />
+    </Key>
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="addtionID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="addtionTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="patientID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="patientName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="patientSpellCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="patientAge" Type="Int32" Nullable="false" />
+    <Property Name="patientSex" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="patientDept" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bedNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="operateName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="execDept" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="orderID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="biz_OutStockDt">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="orderID" />
+      <PropertyRef Name="detailID" />
+    </Key>
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="orderID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="detailID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="goodsID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="batchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="expiryDate" Type="DateTime" Precision="3" />
+    <Property Name="productDate" Type="DateTime" Precision="3" />
+    <Property Name="orderNum" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="actualNum" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="RFIDCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="barcode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="locatorID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="updateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="biz_OutStockDt_Test">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="orderID" />
+      <PropertyRef Name="detailID" />
+    </Key>
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="orderID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="detailID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="goodsID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="batchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="expiryDate" Type="DateTime" Precision="3" />
+    <Property Name="productDate" Type="DateTime" Precision="3" />
+    <Property Name="orderNum" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="actualNum" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="RFIDCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="barcode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="locatorID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="updateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="biz_RFIDLog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="orderNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="RFID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="locatorID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="updateMan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="updateTime" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="biz_Stock">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="goodsID" />
+      <PropertyRef Name="batchNo" />
+      <PropertyRef Name="locatorID" />
+      <PropertyRef Name="RFID" />
+    </Key>
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="goodsID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="batchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="expiryDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="productDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="locatorID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RFID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="barCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bizNum" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="actualNum" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="interface_InStock_RF">
+    <Key>
+      <PropertyRef Name="orderID" />
+      <PropertyRef Name="orderdetailID" />
+      <PropertyRef Name="terminalID" />
+    </Key>
+    <Property Name="orderID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="orderdetailID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="supplier" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="deptID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="goodsID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="validityDate" Type="DateTime" Precision="3" />
+    <Property Name="produceDate" Type="DateTime" Precision="3" />
+    <Property Name="batchNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="num" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="RFID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="creator" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="extLocatorID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="orderTime" Type="DateTime" Precision="3" />
+    <Property Name="receiveTime" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="interface_OutStock">
+    <Key>
+      <PropertyRef Name="PICKING_CODE" />
+    </Key>
+    <Property Name="PICKING_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="STORE_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="LOCATOR_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DRUG_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DRUG_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SPEC" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="UNIT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DETAIL_NUM" Type="Int32" />
+    <Property Name="BATCH_NUM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NUM" Type="Int32" />
+    <Property Name="Insertdate" Type="DateTime" Precision="3" />
+    <Property Name="DataUP" Type="Int32" Nullable="false" />
+    <Property Name="SCANCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="patientID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="patientName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="patientAge" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="patientSex" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="createTime" Type="DateTime" Precision="3" />
+    <Property Name="creator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="expiryDate" Type="DateTime" Precision="3" />
+    <Property Name="productDate" Type="DateTime" Precision="3" />
+    <Property Name="patientDept" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="interface_OutStock_RF">
+    <Key>
+      <PropertyRef Name="orderID" />
+    </Key>
+    <Property Name="orderID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="patientID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="patientName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="patientSpellCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="patientAge" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="patientSex" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="patientDept" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="bedNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="operateName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="execDept" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="creator" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="createTime" Type="DateTime" Precision="3" />
+    <Property Name="receiveTime" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="sys_Camera">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="cameraID" />
+    </Key>
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cameraID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cameraIP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="valid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="sys_Hospital">
+    <Key>
+      <PropertyRef Name="hospitalID" />
+    </Key>
+    <Property Name="hospitalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hospitalName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="sys_LocatorSet">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="locatorID" />
+    </Key>
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="locatorID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="plateAddress" Type="Int32" Nullable="false" />
+    <Property Name="lockAddress" Type="Int32" Nullable="false" />
+    <Property Name="RFIDIP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="antennasID" Type="Int32" />
+    <Property Name="antennasGL" Type="Int32" />
+    <Property Name="antennasLMD" Type="Int32" />
+    <Property Name="uniqueCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="valid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="sys_Log">
+    <Key>
+      <PropertyRef Name="logID" />
+    </Key>
+    <Property Name="logID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="clientIP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="logType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="moduleID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="operator" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="operatorTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sys_Module">
+    <Key>
+      <PropertyRef Name="moduleID" />
+    </Key>
+    <Property Name="moduleID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="moduleName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="valid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="sys_Parameter">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="parameterID" />
+    </Key>
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="parameterID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="parameterName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="valid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="sys_Role">
+    <Key>
+      <PropertyRef Name="roleID" />
+    </Key>
+    <Property Name="roleID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="roleName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="valid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="sys_RoleModule">
+    <Key>
+      <PropertyRef Name="roleID" />
+      <PropertyRef Name="moduleID" />
+    </Key>
+    <Property Name="roleID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="moduleID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="valid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="sys_Terminal">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="terminalMAC" />
+    </Key>
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="terminalName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="terminalMAC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="terminalIP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="terminalType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="openMode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="departmentID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="sys_TypeDic">
+    <Key>
+      <PropertyRef Name="typeID" />
+      <PropertyRef Name="detailID" />
+    </Key>
+    <Property Name="typeID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="typeName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="detailID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="detailName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="valid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateMan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="bas_UserRoots">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="userID" />
+      <PropertyRef Name="valid" />
+      <PropertyRef Name="isadmin" />
+      <PropertyRef Name="updateTime" />
+    </Key>
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="valid" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="isadmin" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="biz_RFID_IF_History">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Event" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="LogText" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="CreateTime" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="interface_backSPD_RF">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="status" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="goodsID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="RFID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="terminalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="orderID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="patientID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="patientName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="patientAge" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="patientSex" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="patientDept" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="creator" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="createTime" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="bas_Department" EntityType="Self.bas_Department" />
+    <EntitySet Name="bas_Goods" EntityType="Self.bas_Goods" />
+    <EntitySet Name="bas_Locator" EntityType="Self.bas_Locator" />
+    <EntitySet Name="bas_LocatorGoods" EntityType="Self.bas_LocatorGoods" />
+    <EntitySet Name="bas_LocatorGoods_Test" EntityType="Self.bas_LocatorGoods_Test" />
+    <EntitySet Name="bas_User" EntityType="Self.bas_User" />
+    <EntitySet Name="bas_UserFinger" EntityType="Self.bas_UserFinger" />
+    <EntitySet Name="bas_UserLocator" EntityType="Self.bas_UserLocator" />
+    <EntitySet Name="biz_GoodsAdjust" EntityType="Self.biz_GoodsAdjust" />
+    <EntitySet Name="biz_GoodsLog" EntityType="Self.biz_GoodsLog" />
+    <EntitySet Name="biz_InStock" EntityType="Self.biz_InStock" />
+    <EntitySet Name="biz_InStockDt" EntityType="Self.biz_InStockDt" />
+    <EntitySet Name="biz_InStockDt_Test" EntityType="Self.biz_InStockDt_Test" />
+    <EntitySet Name="biz_Inventory" EntityType="Self.biz_Inventory" />
+    <EntitySet Name="biz_InventoryDt" EntityType="Self.biz_InventoryDt" />
+    <EntitySet Name="biz_LossReport" EntityType="Self.biz_LossReport" />
+    <EntitySet Name="biz_OutStock" EntityType="Self.biz_OutStock" />
+    <EntitySet Name="biz_OutStockAddtion" EntityType="Self.biz_OutStockAddtion" />
+    <EntitySet Name="biz_OutStockDt" EntityType="Self.biz_OutStockDt" />
+    <EntitySet Name="biz_OutStockDt_Test" EntityType="Self.biz_OutStockDt_Test" />
+    <EntitySet Name="biz_RFIDLog" EntityType="Self.biz_RFIDLog" />
+    <EntitySet Name="biz_Stock" EntityType="Self.biz_Stock" />
+    <EntitySet Name="interface_InStock_RF" EntityType="Self.interface_InStock_RF" />
+    <EntitySet Name="interface_OutStock" EntityType="Self.interface_OutStock" />
+    <EntitySet Name="interface_OutStock_RF" EntityType="Self.interface_OutStock_RF" />
+    <EntitySet Name="sys_Camera" EntityType="Self.sys_Camera" />
+    <EntitySet Name="sys_Hospital" EntityType="Self.sys_Hospital" />
+    <EntitySet Name="sys_LocatorSet" EntityType="Self.sys_LocatorSet" />
+    <EntitySet Name="sys_Log" EntityType="Self.sys_Log" />
+    <EntitySet Name="sys_Module" EntityType="Self.sys_Module" />
+    <EntitySet Name="sys_Parameter" EntityType="Self.sys_Parameter" />
+    <EntitySet Name="sys_Role" EntityType="Self.sys_Role" />
+    <EntitySet Name="sys_RoleModule" EntityType="Self.sys_RoleModule" />
+    <EntitySet Name="sys_Terminal" EntityType="Self.sys_Terminal" />
+    <EntitySet Name="sys_TypeDic" EntityType="Self.sys_TypeDic" />
+    <EntitySet Name="bas_UserRoots" EntityType="Self.bas_UserRoots" />
+    <EntitySet Name="biz_RFID_IF_History" EntityType="Self.biz_RFID_IF_History" />
+    <EntitySet Name="interface_backSPD_RF" EntityType="Self.interface_backSPD_RF" />
+  </EntityContainer>
+</Schema>

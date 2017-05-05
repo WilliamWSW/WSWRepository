@@ -1,0 +1,52 @@
+﻿@model ISC_Web.Models.ISC.sys_Role
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <dl>
+            <dt>LoginName:</dt>
+            <dd>@ViewBag.loginname</dd>
+            <dt>UserName:</dt>
+            <dd>@ViewBag.username</dd>
+
+             <dt>RoleDetails:</dt>
+             <dd>
+                 <table>
+                     <tr>
+                         <th>RoleId</th>
+                         <th>RoleName</th>
+                     </tr>
+                     <tr>
+                         <td>@ViewBag.id</td>
+                         <td>@ViewBag.name</td>
+                     </tr>
+                     <tr><td>&nbsp;</td><td></td></tr>
+                     <tr>
+                         <td>同组其它用户：</td>
+                         <td></td>
+                     </tr>
+
+                     @foreach (var item in Model.bas_Users)
+                     {
+                        <tr>
+                            <td>@Html.DisplayFor(model => item.loginName)</td>
+                            <td>@Html.DisplayFor(model => item.userName)</td>
+                        </tr>
+
+                     }
+                 </table>
+             </dd>
+        </dl>
+    </div>
+</body>
+</html>

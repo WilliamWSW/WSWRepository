@@ -1,0 +1,225 @@
+﻿@model ISC_Web.Models.sys_LocatorSet
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    @*<script src="~/Scripts/jquery-1.8.1.min.js"></script>*@
+    <script src="~/Scripts/jquery-1.12.3.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <title>LocatorSetEdit</title>
+</head>
+<body>
+    <div class="container-fluid">
+
+        <h4 class="text-center"><strong>板锁和RFID信息编辑</strong></h4>
+        <hr />
+        @using (Html.BeginForm("LocatorSetEdit", "HardWare", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                    <strong>终端名称:</strong>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 text-left" id="lbllmterminal">
+                    @Html.TextBoxFor(model => model.terminalID, new { @readonly = true })
+                </div>
+                <div class="col-xs-1 col-sm-1 col-md-1 text-right">
+                    <strong>格口名称:</strong>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 text-left" id="lbllmlocator">
+                    @Html.TextBoxFor(model => model.locatorID, new { @required = true,@readonly = true })
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                    <strong>唯一识别号:</strong>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 text-left" id="txtlmuniqueCode">
+                    @Html.TextBoxFor(Model => Model.uniqueCode, new { @required = true})
+                </div>
+                <div class="col-xs-1 col-sm-1 col-md-1 text-right">
+                    <strong>是否停用:</strong>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 text-left">
+                    @*@Html.TextBoxFor(model => model.valid, new { @required = true })*@
+                    @Html.DropDownList("valid", null, new { @style = "Width:160px", @required = true })
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                    <strong>板地址:</strong>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 text-left" id="txtlmplateAddress">
+                    @Html.TextBoxFor(model => model.plateAddress, new { @required = true })
+                </div>
+                <div class="col-xs-1 col-sm-1 col-md-1 text-right">
+                    <strong>锁地址:</strong>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 text-left" id="txtlmlockAddress">
+                    @Html.TextBoxFor(model => model.lockAddress, new { @required = true })
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                    <strong>RFID天线编号:</strong>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 text-left" id="txtlmantennasID">
+                    @Html.TextBoxFor(model => model.antennasID)
+                </div>
+                <div class="col-xs-1 col-sm-1 col-md-1 text-right">
+                    <strong>RFID天线IP地址:</strong>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 text-left" id="txtlmRFIDIP">
+                    @Html.TextBoxFor(model => model.RFIDIP)
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                    <strong>RFID天线功率:</strong>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 text-left" id="txtlmantennasGL">
+                    @Html.TextBoxFor(model => model.antennasGL)
+                </div>
+                <div class="col-xs-1 col-sm-1 col-md-1 text-right">
+                    <strong>RFID天线灵敏度:</strong>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 text-left" id="txtlmantennasLMD">
+                    @Html.TextBoxFor(model => model.antennasLMD)
+                </div>
+            </div>
+            <br />
+            <div class="row hidden">
+                <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                    <strong>编辑人员:</strong>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 text-left" id="lbllmupdateMan">
+                    @Html.TextBoxFor(model => model.updateMan, new {  @readonly = true })
+                </div>
+                <div class="col-xs-1 col-sm-1 col-md-1 text-right">
+                    <strong>编辑时间:</strong>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 text-left" id="lbllmupdateTime">
+                    @Html.TextBoxFor(model => model.updateTime, new { @Value = DateTime.Now.ToString(), @readonly = true })
+                </div>
+                <div>
+
+                    <input type="text" id="screen" name="screen" value="@ViewBag.Screen" class="hidden" />
+                    <input type="text" id="Hisorder" name="Hisorder" value="@ViewBag.Order" class="hidden" />
+                    <input type="text" id="search" name="search" value="@ViewBag.Search" class="hidden" />
+                    <input type="text" id="filter" name="filter" value="@ViewBag.Filter" class="hidden" />
+                    <input type="text" id="pagenum" name="pagenum" value="@ViewBag.PageNum" class="hidden" />
+
+                </div>
+            </div>
+            <br />
+
+            <br /><br /><br /><hr />
+
+            <div>
+
+                <input type="submit" id="btnlmsubmit" value="提交" class="btn btn-default hidden" />
+
+            </div>
+
+
+
+        }
+
+        <div style="position:fixed;height:90px;bottom:0px;">
+            <hr />
+            @Html.ActionLink("返  回", "LocatorSet",
+       new
+       {
+           id = ViewBag.Screen,
+           screen = ViewBag.Screen,
+           Hisorder = ViewBag.Order,
+           search = ViewBag.Search,
+           filter = ViewBag.Filter,
+           page = ViewBag.PageNum,
+           goback = 1
+       }, new { @class = "btn btn btn-default", @id = "btnlmback" })
+            <button class="btn btn-default hidden" data-toggle="modal" data-target="#myModal" id="btnlmup">
+                返回上一级
+            </button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-default" id="btnlmsave" onclick="savebtn()">
+                保存
+            </button>
+
+        </div>
+
+
+
+
+    </div>
+
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="返回确认" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <strong class="modal-title text-primary" id="myModalLabel">
+                        操作确认
+                    </strong>
+                </div>
+                <div class="modal-body ">
+                    返回上一级界面吗?
+                </div>
+                <div class="modal-footer">
+
+                    @Html.ActionLink("确 认", "LocatorSet",
+       new
+       {
+           id = ViewBag.Screen,
+           screen = ViewBag.Screen,
+           Hisorder = ViewBag.Order,
+           search = ViewBag.Search,
+           filter = ViewBag.Filter,
+           page = ViewBag.PageNum,
+           goback = 1
+       }, new { @class = "btn btn btn-default", @id = "btnlmsure" })
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        取&nbsp;消
+                    </button>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+
+    <script type="text/javascript">
+        function centerModals() {
+            $('#myModal').each(function (i) {
+                var $clone = $(this).clone().css('display', 'block').appendTo('body');
+                var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 2);
+                top = top > 0 ? top : 0;
+                $clone.remove();
+                $(this).find('.modal-content').css("margin-top", top);
+            });
+        };
+
+
+    </script>
+
+    <script type="text/javascript">
+        $(function () { $('#myModal').on('show.bs.modal', centerModals) });
+
+    </script>
+    <script>
+        function savebtn() { document.getElementById("btnlmsubmit").click(); };
+    </script>
+
+</body>
+</html>

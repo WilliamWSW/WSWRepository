@@ -1,0 +1,280 @@
+﻿@model PagedList.IPagedList<ISC_Web.ViewModels.VM_LocatorGoods>
+@using PagedList.Mvc;
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+
+    <script src="~/Scripts/jquery-1.12.3.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <title>ISC Web System</title>
+</head>
+<body style="overflow:auto">
+    <div class="container-fluid" id="Dedetail">
+        <div id="query_hint" class="query_hint">
+            <img src="~/img/wait.gif" />正在查询，请稍等...
+        </div>
+        <div class="panel panel-default" style="margin-top:8px">
+            <div class="panel-heading">
+
+                @using (Html.BeginForm("LocatorGoods", "BaseInfo", FormMethod.Get, new { @class = "form-inline" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+
+                        @Html.ActionLink("新建货位商品关系", "CreateLocatorGoods", new
+                   {
+                       screen = ViewBag.Screen,
+                       order = ViewBag.Order,
+                       search = ViewBag.Search,
+                       filter = ViewBag.Filter,
+                       pagenum = ViewBag.PageNum
+                   }, new { @class = "btn btn-primary", @id = "btnumcreate" })&nbsp;&nbsp;
+
+                        @*<div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"> 商品名：</span>
+                            <input type="text" id="txtrmsearch" name="txtrmsearch" value="@ViewBag.Search" class="form-control" placeholder="比如:王闵慧,闵亚妮" aria-describedby="basic-addon1">
+                            <span class="input-group-btn">
+                                <input type="submit" class="btn btn-default" id="btnumsearch" name="btnumsearch" value="查   询" />
+                                &nbsp; &nbsp;
+                            </span>
+                        </div>*@
+                        <div class="form-group">
+                            <label id="lblglsTerminalD">终端号:</label>
+                            <input id="txtglsterminalid_input" name="txtglsterminalid_input" class="form-control input-sm" type="text" placeholder="1,2,3" style="width:60px" value="@ViewBag.TerminalID" />
+                        </div> &nbsp; &nbsp;
+                        <div class="form-group">
+                            <label id="lblglsGoodsCode">商品名:</label>
+                            <input type="text" id="txtglsGoodsCode" name="txtglsGoodsCode" class="form-control input-sm" placeholder="编码、拼音码、名称" style="width:130px" value="@ViewBag.GoodsID" />
+                        </div>&nbsp; &nbsp;
+                        <div class="form-group">
+                            <label id="lblglsLocatorID">货位号:</label>
+                            <input type="text" id="txtglsLocatorID" name="txtglsLocatorID" class="form-control input-sm" placeholder="Collate_1_1或Z-01-01-11-01" style="width:200px" value="@ViewBag.LocatorID" />
+                        </div>&nbsp; &nbsp;
+
+                        <div class="form-group">
+                            <input type="submit" id="btnglssearch" value="查  询" onclick="show_query_hint()" />
+
+                            <a id="btnglssearch1" tabindex="0" class="btn btn-primary hidden" role="button" data-toggle="popover" onclick="callbtnglssearch()"
+                               data-trigger="focus" title="小秘书" data-content="查询的时候如果加上终端号,查询的速度会变快哦">查  询</a>
+
+                        </div>
+                    </div>
+
+                }
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+
+                    <table class="table table-condensed table-bordered table-hover" align="center" style="white-space:nowrap;">
+                        <thead style="background: #EEEEEE;">
+                            <tr>
+                                <th class="text-center">终端号</th>
+                                <th class="text-center">货位号</th>
+                                <th class="text-center">SPD货位号</th>
+                                <th class="text-center">商品编码</th>
+                                <th class="text-center">商品名称</th>
+                                <th class="text-center">批号</th>
+                                <th class="text-center">最大库存数</th>
+                                <th class="text-center">最小库存数</th>
+                                <th class="text-center">编辑人员</th>
+                                <th class="text-center">编辑时间</th>
+                                <th class="text-center">操作选项</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @if (Model.Count == 0)
+                            {
+                                <tr>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                </tr>
+                            }
+                            @foreach (var item in Model)
+            {
+                                <tr onclick="rowclick(this);">
+                                    <td>@Html.DisplayFor(model => item.terminalID)</td>
+                                    <td>@Html.DisplayFor(model => item.locatorID)</td>
+                                    <td>@Html.DisplayFor(model => item.extLocatorID)</td>
+                                    <td>@Html.DisplayFor(model => item.goodsID)</td>
+                                    <td>@Html.DisplayFor(model => item.goodsName)</td>
+                                    <td>@Html.DisplayFor(model => item.batchNo)</td>
+                                    <td>@Html.DisplayFor(model => item.maxNum)</td>
+                                    <td>@Html.DisplayFor(model => item.minNum)</td>
+                                    <td>@Html.DisplayFor(model => item.updateMan)</td>
+                                    <td>@Html.DisplayFor(model => item.updateTime)</td>
+                                    <td class="text-center">
+
+                                        @Html.ActionLink("编辑", "LocatorGoodsEdit",
+                               new
+                               {
+                                   id = item.goodsID,
+                                   terminalID = item.terminalID,
+                                   locatorID = item.locatorID,
+                                   screen = ViewBag.Screen,
+                                   search = ViewBag.Search,
+                                   pagenum = ViewBag.PageNum,
+                                   lotno = item.batchNo
+                               }, new { @id = "btnumedit" }) |
+                                        @*@Html.ActionLink("删除", "ISCDelete", new { id = item.deptID })*@
+                                        <a data-toggle="modal" data-target="#myModal" href="#" id="btnumdelete">删除</a>
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div style="position:fixed;height:60px;bottom:0px;">
+                <form class="form-inline">
+                    <div class="form-group">
+                        @Html.PagedListPager(Model, page => Url.Action("LocatorGoods", new
+               {
+                   page,
+                   txtglsterminalid_input = ViewBag.TerminalID,
+                   txtglsGoodsCode = ViewBag.GoodsID,
+                   txtglsLocatorID = ViewBag.LocatorID
+               })
+, new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 100 })
+                    </div>&nbsp;&nbsp;
+                    <div class="form-group">
+                        总记录数:@Model.TotalItemCount 行
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="返回确认" aria-hidden="true" data-backdrop="true">
+            <div class="modal-dialog modal-sm" style="width:500px">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4>
+                            <strong class="modal-title text-primary" id="myModalLabel">
+                                删除确认
+                            </strong>
+                        </h4>
+                    </div>
+                    <div class="modal-body ">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="id" class="col-xs-3 col-md-3 text-right control-label">终端号:</label>
+                                <div class="col-xs-7 col-md-7 text-left">
+                                    <input type="text" name="id" id="id" class="form-control" readonly />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="locatorid" class="col-xs-3 col-md-3 text-right control-label">货位号:</label>
+                                <div class="col-xs-7 col-md-7 text-left">
+                                    <input type="text" name="locatorid" id="locatorid" class="form-control" readonly />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="goodsid" class="col-xs-3 col-md-3 text-right control-label">商品编码:</label>
+                                <div class="col-xs-7 col-md-7 text-left">
+                                    <input type="text" name="goodsid" id="goodsid" class="form-control" readonly />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="goodsname" class="col-xs-3 col-md-3 text-right control-label">商品名:</label>
+                                <div class="col-xs-7 col-md-7 text-left">
+                                    <input type="text" name="goodsname" id="goodsname" class="form-control" readonly />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="batchno" class="col-xs-3 col-md-3 text-right control-label">批号:</label>
+                                <div class="col-xs-7 col-md-7 text-left">
+                                    <input type="text" name="batchno" id="batchno" class="form-control" readonly />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-6 col-md-6"></div>
+                                <label class="col-xs-6 col-md-6">是否删除以上货位商品关系？</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-lg" onclick="urldelid()" id="btnumconfirm">确&nbsp;认</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal" id="btnumcancel">
+                            取&nbsp;消
+                        </button>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <script type="text/javascript">
+        var id=null;
+        var locatorid = null;
+        var goodsid = null;
+        var batchno = null;
+        function rowclick(obj) {
+            id = obj.cells[0].innerText;
+            locatorid = obj.cells[1].innerText;
+            goodsid = obj.cells[3].innerText;
+            goodsname = obj.cells[4].innerText;
+            batchno = obj.cells[5].innerText;
+
+        }
+
+        function DelID(obj){
+            $('#id').val(id);
+            $('#locatorid').val(locatorid);
+            $('#goodsid').val(goodsid);
+            $('#goodsname').val(goodsname);
+            $('#batchno').val(batchno);
+
+        }
+        function urldelid(){
+
+            window.location.href = "/BaseInfo/LocatorGoodsDel/" + id + "?locatorid=" + locatorid + "&goodsid=" + goodsid + "&batchno=" + batchno;
+        }
+        $(function () { $('#myModal').on('show.bs.modal', DelID) });
+
+        function callbtnglssearch() {
+
+            document.getElementById("btnglssearch").click();
+        }
+    </script>
+</body>
+</html>
+<script type="text/javascript">
+
+    //页面加载完成之后去掉Loading
+    $(document).ready(function () {
+        // parent.frames[0].queryHintCallback();
+        queryHintCallback();
+    });
+
+function show_query_hint(){
+    var query_hint = document.getElementById("query_hint");
+    query_hint.style.display="block";
+}
+
+
+
+function queryHintCallback(){
+    var query_hint = document.getElementById("query_hint");
+    query_hint.style.display="none";
+}
+</script>

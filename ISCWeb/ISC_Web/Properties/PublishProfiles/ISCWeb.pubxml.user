@@ -1,0 +1,467 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword />
+    <_PublishTargetUrl>ftp://192.168.198.80</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>04/27/2017 09:41:10</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>04/27/2017 09:40:21</publishTime>
+    </File>
+    <File Include="bin/ISC_Web.dll">
+      <publishTime>05/05/2017 09:02:32</publishTime>
+    </File>
+    <File Include="bin/ISC_Web.pdb">
+      <publishTime>05/05/2017 09:02:32</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>04/27/2017 09:40:59</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>04/27/2017 09:41:09</publishTime>
+    </File>
+    <File Include="bin/PagedList.dll">
+      <publishTime>04/27/2017 09:41:09</publishTime>
+    </File>
+    <File Include="bin/PagedList.Mvc.dll">
+      <publishTime>04/27/2017 09:41:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>04/27/2017 09:41:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>04/27/2017 09:41:01</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>04/27/2017 09:41:33</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>04/27/2017 09:41:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>04/27/2017 09:41:36</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>04/27/2017 09:41:01</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>04/27/2017 09:41:02</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>04/27/2017 09:41:05</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>04/27/2017 09:41:06</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>04/27/2017 09:41:05</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>04/27/2017 09:41:08</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>04/27/2017 09:41:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>04/27/2017 09:40:57</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>04/27/2017 09:40:55</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>04/27/2017 09:40:55</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Deployment.dll">
+      <publishTime>04/27/2017 09:40:56</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.dll">
+      <publishTime>04/27/2017 09:40:59</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Razor.dll">
+      <publishTime>04/27/2017 09:40:57</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/EntityFramework.resources.dll">
+      <publishTime>04/27/2017 09:40:25</publishTime>
+    </File>
+    <File Include="Content/AutoTable.css">
+      <publishTime>04/27/2017 09:39:54</publishTime>
+    </File>
+    <File Include="Content/bootstrap-datetimepicker.min.css">
+      <publishTime>04/27/2017 09:39:55</publishTime>
+    </File>
+    <File Include="Content/bootstrap-duallistbox.css">
+      <publishTime>04/27/2017 09:39:55</publishTime>
+    </File>
+    <File Include="Content/bootstrap-table.css">
+      <publishTime>04/10/2017 14:06:40</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css">
+      <publishTime>04/27/2017 09:39:55</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>04/27/2017 16:32:06</publishTime>
+    </File>
+    <File Include="Content/bui.css">
+      <publishTime>04/27/2017 09:39:55</publishTime>
+    </File>
+    <File Include="Content/dashboard.css">
+      <publishTime>04/27/2017 09:39:55</publishTime>
+    </File>
+    <File Include="Content/dpl.css">
+      <publishTime>04/27/2017 09:39:56</publishTime>
+    </File>
+    <File Include="Content/main.css">
+      <publishTime>04/27/2017 09:39:55</publishTime>
+    </File>
+    <File Include="Content/PagedList.css">
+      <publishTime>04/27/2017 09:39:55</publishTime>
+    </File>
+    <File Include="Content/signin.css">
+      <publishTime>04/27/2017 09:39:55</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>04/27/2017 09:39:44</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>04/27/2017 09:39:57</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>04/27/2017 09:39:57</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>04/27/2017 09:39:57</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>04/27/2017 09:39:57</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>04/27/2017 09:39:57</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>04/27/2017 09:39:45</publishTime>
+    </File>
+    <File Include="img/calendar-200-300.gif">
+      <publishTime>04/27/2017 09:39:57</publishTime>
+    </File>
+    <File Include="img/checkbox.gif">
+      <publishTime>04/27/2017 09:39:57</publishTime>
+    </File>
+    <File Include="img/check_icon-100-100.gif">
+      <publishTime>04/27/2017 09:39:57</publishTime>
+    </File>
+    <File Include="img/CQP2.png">
+      <publishTime>04/27/2017 09:39:57</publishTime>
+    </File>
+    <File Include="img/hide_list.png">
+      <publishTime>04/27/2017 09:39:57</publishTime>
+    </File>
+    <File Include="img/icon-806-614.png">
+      <publishTime>04/27/2017 09:39:57</publishTime>
+    </File>
+    <File Include="img/left-slib.gif">
+      <publishTime>04/27/2017 09:39:57</publishTime>
+    </File>
+    <File Include="img/load-16-16.gif">
+      <publishTime>04/27/2017 09:39:57</publishTime>
+    </File>
+    <File Include="img/logo.png">
+      <publishTime>04/19/2017 18:33:36</publishTime>
+    </File>
+    <File Include="img/main-nav-bg.png">
+      <publishTime>04/27/2017 09:39:57</publishTime>
+    </File>
+    <File Include="img/main-nav-bg1.png">
+      <publishTime>04/27/2017 09:39:57</publishTime>
+    </File>
+    <File Include="img/Mainlogo_32.ico">
+      <publishTime>04/01/2017 21:53:57</publishTime>
+    </File>
+    <File Include="img/menu-500-188.png">
+      <publishTime>04/27/2017 09:39:57</publishTime>
+    </File>
+    <File Include="img/menu.jpg">
+      <publishTime>04/27/2017 09:39:58</publishTime>
+    </File>
+    <File Include="img/nav.jpg">
+      <publishTime>04/27/2017 09:39:58</publishTime>
+    </File>
+    <File Include="img/nav_selected.png">
+      <publishTime>04/27/2017 09:39:58</publishTime>
+    </File>
+    <File Include="img/radio_icon-64-40.gif">
+      <publishTime>04/27/2017 09:39:58</publishTime>
+    </File>
+    <File Include="img/resource.jpg">
+      <publishTime>04/27/2017 09:39:58</publishTime>
+    </File>
+    <File Include="img/separator-2-340.gif">
+      <publishTime>04/27/2017 09:39:58</publishTime>
+    </File>
+    <File Include="img/sprite-469-300.png">
+      <publishTime>04/27/2017 09:39:58</publishTime>
+    </File>
+    <File Include="img/tab-140-120.gif">
+      <publishTime>04/27/2017 09:39:58</publishTime>
+    </File>
+    <File Include="img/table-191-450.gif">
+      <publishTime>04/27/2017 09:39:58</publishTime>
+    </File>
+    <File Include="img/tree.gif">
+      <publishTime>04/27/2017 09:39:58</publishTime>
+    </File>
+    <File Include="img/tree_icon-80-100.gif">
+      <publishTime>04/27/2017 09:39:58</publishTime>
+    </File>
+    <File Include="img/wait.gif">
+      <publishTime>04/27/2017 16:26:49</publishTime>
+    </File>
+    <File Include="img/white_sprite-469-300.png">
+      <publishTime>04/27/2017 09:39:58</publishTime>
+    </File>
+    <File Include="img/后台登录界面3.jpg">
+      <publishTime>04/19/2017 18:33:31</publishTime>
+    </File>
+    <File Include="img/后台登录界面4.jpg">
+      <publishTime>04/19/2017 10:57:58</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>04/27/2017 09:39:44</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap-datetimepicker.min.js">
+      <publishTime>04/27/2017 09:40:00</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap-table.js">
+      <publishTime>04/10/2017 14:06:12</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>04/27/2017 09:40:01</publishTime>
+    </File>
+    <File Include="Scripts/bui.js">
+      <publishTime>04/27/2017 09:40:08</publishTime>
+    </File>
+    <File Include="Scripts/common/build.xml">
+      <publishTime>04/27/2017 09:40:05</publishTime>
+    </File>
+    <File Include="Scripts/common/main-min.js">
+      <publishTime>04/27/2017 09:40:05</publishTime>
+    </File>
+    <File Include="Scripts/common/main.js">
+      <publishTime>04/06/2017 19:57:05</publishTime>
+    </File>
+    <File Include="Scripts/common/page-min.js">
+      <publishTime>04/27/2017 09:40:05</publishTime>
+    </File>
+    <File Include="Scripts/common/page.js">
+      <publishTime>04/27/2017 09:40:05</publishTime>
+    </File>
+    <File Include="Scripts/common/search-min.js">
+      <publishTime>04/27/2017 09:40:05</publishTime>
+    </File>
+    <File Include="Scripts/common/search.js">
+      <publishTime>04/27/2017 09:40:05</publishTime>
+    </File>
+    <File Include="Scripts/config.js">
+      <publishTime>04/27/2017 09:40:01</publishTime>
+    </File>
+    <File Include="Scripts/extensions/treegrid-min.js">
+      <publishTime>04/27/2017 09:40:06</publishTime>
+    </File>
+    <File Include="Scripts/extensions/treepicker-min.js">
+      <publishTime>04/27/2017 09:40:06</publishTime>
+    </File>
+    <File Include="Scripts/html5shiv.min.js">
+      <publishTime>04/27/2017 09:40:01</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.12.3.js">
+      <publishTime>04/27/2017 09:40:05</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.8.1.min.js">
+      <publishTime>04/27/2017 09:40:03</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.2.0.js">
+      <publishTime>04/27/2017 09:40:05</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.2.0.min.js">
+      <publishTime>03/20/2017 10:30:51</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.2.0.min.map">
+      <publishTime>04/27/2017 09:40:05</publishTime>
+    </File>
+    <File Include="Scripts/jquery.bootstrap-duallistbox.js">
+      <publishTime>04/27/2017 09:40:02</publishTime>
+    </File>
+    <File Include="Scripts/moment-with-locales.min.js">
+      <publishTime>04/27/2017 09:40:07</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>04/27/2017 09:40:05</publishTime>
+    </File>
+    <File Include="Views/Admin/Create.cshtml">
+      <publishTime>05/03/2017 17:29:30</publishTime>
+    </File>
+    <File Include="Views/Admin/CreateRole.cshtml">
+      <publishTime>05/03/2017 17:30:21</publishTime>
+    </File>
+    <File Include="Views/Admin/CreateUser.cshtml">
+      <publishTime>05/03/2017 17:30:49</publishTime>
+    </File>
+    <File Include="Views/Admin/Department.cshtml">
+      <publishTime>04/28/2017 17:25:00</publishTime>
+    </File>
+    <File Include="Views/Admin/DepartmentDetails.cshtml">
+      <publishTime>04/27/2017 09:51:42</publishTime>
+    </File>
+    <File Include="Views/Admin/DepartmentEdit.cshtml">
+      <publishTime>05/03/2017 17:31:06</publishTime>
+    </File>
+    <File Include="Views/Admin/Role.cshtml">
+      <publishTime>04/28/2017 17:25:00</publishTime>
+    </File>
+    <File Include="Views/Admin/RoleEdit.cshtml">
+      <publishTime>05/03/2017 17:31:39</publishTime>
+    </File>
+    <File Include="Views/Admin/UserEdit.cshtml">
+      <publishTime>05/03/2017 17:32:13</publishTime>
+    </File>
+    <File Include="Views/Admin/UserList.cshtml">
+      <publishTime>04/28/2017 17:25:00</publishTime>
+    </File>
+    <File Include="Views/BaseInfo/CreateGoods.cshtml">
+      <publishTime>05/04/2017 14:22:27</publishTime>
+    </File>
+    <File Include="Views/BaseInfo/CreateLocator.cshtml">
+      <publishTime>04/28/2017 16:10:49</publishTime>
+    </File>
+    <File Include="Views/BaseInfo/CreateLocatorGoods.cshtml">
+      <publishTime>05/04/2017 14:25:10</publishTime>
+    </File>
+    <File Include="Views/BaseInfo/CreateTerminal.cshtml">
+      <publishTime>05/04/2017 14:23:50</publishTime>
+    </File>
+    <File Include="Views/BaseInfo/GoodsDetails.cshtml">
+      <publishTime>04/27/2017 17:22:29</publishTime>
+    </File>
+    <File Include="Views/BaseInfo/GoodsEdit.cshtml">
+      <publishTime>05/04/2017 14:25:46</publishTime>
+    </File>
+    <File Include="Views/BaseInfo/GoodsList.cshtml">
+      <publishTime>04/28/2017 17:25:00</publishTime>
+    </File>
+    <File Include="Views/BaseInfo/LocatorEdit.cshtml">
+      <publishTime>05/04/2017 14:26:07</publishTime>
+    </File>
+    <File Include="Views/BaseInfo/LocatorGoods.cshtml">
+      <publishTime>05/03/2017 10:21:42</publishTime>
+    </File>
+    <File Include="Views/BaseInfo/LocatorGoodsEdit.cshtml">
+      <publishTime>05/04/2017 14:28:17</publishTime>
+    </File>
+    <File Include="Views/BaseInfo/LocatorList.cshtml">
+      <publishTime>05/02/2017 17:19:55</publishTime>
+    </File>
+    <File Include="Views/BaseInfo/TerminalEdit.cshtml">
+      <publishTime>05/04/2017 14:28:51</publishTime>
+    </File>
+    <File Include="Views/BaseInfo/TerminalList.cshtml">
+      <publishTime>04/28/2017 17:25:00</publishTime>
+    </File>
+    <File Include="Views/BaseInfo/UserFinger.cshtml">
+      <publishTime>04/28/2017 17:25:00</publishTime>
+    </File>
+    <File Include="Views/HardWare/LocatorSet.cshtml">
+      <publishTime>04/28/2017 17:25:00</publishTime>
+    </File>
+    <File Include="Views/HardWare/LocatorSetDetails.cshtml">
+      <publishTime>04/27/2017 17:22:29</publishTime>
+    </File>
+    <File Include="Views/HardWare/LocatorSetEdit.cshtml">
+      <publishTime>05/04/2017 14:29:17</publishTime>
+    </File>
+    <File Include="Views/InStock/InstockHis.cshtml">
+      <publishTime>05/04/2017 17:27:32</publishTime>
+    </File>
+    <File Include="Views/InStock/test.cshtml">
+      <publishTime>04/27/2017 09:40:07</publishTime>
+    </File>
+    <File Include="Views/ISC/ISCDetails.cshtml">
+      <publishTime>04/27/2017 09:40:07</publishTime>
+    </File>
+    <File Include="Views/ISC/ISCIndex.cshtml">
+      <publishTime>04/27/2017 09:40:07</publishTime>
+    </File>
+    <File Include="Views/ISC/LoginTo.cshtml">
+      <publishTime>04/27/2017 09:40:08</publishTime>
+    </File>
+    <File Include="Views/Main/AccessError.cshtml">
+      <publishTime>04/27/2017 09:40:08</publishTime>
+    </File>
+    <File Include="Views/Main/Help.cshtml">
+      <publishTime>04/27/2017 17:14:37</publishTime>
+    </File>
+    <File Include="Views/Main/Login.cshtml">
+      <publishTime>04/27/2017 09:40:08</publishTime>
+    </File>
+    <File Include="Views/Main/Main.cshtml">
+      <publishTime>05/05/2017 09:01:39</publishTime>
+    </File>
+    <File Include="Views/Main/Support.cshtml">
+      <publishTime>04/27/2017 09:40:08</publishTime>
+    </File>
+    <File Include="Views/Main/TempPage.cshtml">
+      <publishTime>04/27/2017 09:40:08</publishTime>
+    </File>
+    <File Include="Views/OutStock/OutstockHis.cshtml">
+      <publishTime>05/04/2017 17:28:07</publishTime>
+    </File>
+    <File Include="Views/Shared/CustomError.cshtml">
+      <publishTime>04/28/2017 09:35:35</publishTime>
+    </File>
+    <File Include="Views/Shared/NotFound.cshtml">
+      <publishTime>04/27/2017 14:06:18</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>04/27/2017 09:40:08</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutAdmin.cshtml">
+      <publishTime>04/27/2017 09:40:08</publishTime>
+    </File>
+    <File Include="Views/Shared/_PartialPageWidget.cshtml">
+      <publishTime>04/27/2017 09:40:08</publishTime>
+    </File>
+    <File Include="Views/StockManage/GoodsLogQuery.cshtml">
+      <publishTime>05/02/2017 17:19:55</publishTime>
+    </File>
+    <File Include="Views/StockManage/Inventory.cshtml">
+      <publishTime>05/02/2017 17:19:55</publishTime>
+    </File>
+    <File Include="Views/StockManage/StockQuery.cshtml">
+      <publishTime>05/02/2017 17:19:55</publishTime>
+    </File>
+    <File Include="Views/web.config">
+      <publishTime>04/27/2017 09:40:07</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>04/27/2017 09:40:06</publishTime>
+    </File>
+    <File Include="Views/响应式模板.cshtml">
+      <publishTime>04/27/2017 09:40:07</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>05/04/2017 17:31:54</publishTime>
+    </File>
+    <File Include="后端框架说明/1.架构简述.txt">
+      <publishTime>04/27/2017 09:40:08</publishTime>
+    </File>
+    <File Include="后端框架说明/2.代码构建流程.txt">
+      <publishTime>04/27/2017 09:40:08</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,69 @@
+﻿@*@model IEnumerable<ISC_Web.Models.bas_Department>*@
+@model PagedList.IPagedList<ISC_Web.Models.bas_Department>
+@using PagedList.Mvc;
+@{
+Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>ISC Web System</title>
+</head>
+<body>
+    <div class="container-fluid">
+       
+        @*<hr style="border:0.5px #428bca  groove;" />*@
+        <br />
+        @using (Html.BeginForm("ISCIndex", "ISC", FormMethod.Get))
+        {
+            <p>
+                部门名称: @Html.TextBox("search", ViewBag.CurrentFilter as string)
+                @Html.Submit("查询") &nbsp;&nbsp;
+                @*sort=@ViewBag.NameSortParm &nbsp;&nbsp;
+                    filter=@ViewBag.CurrentFilter*@
+            </p>
+
+        }
+
+        <div class="table-responsive">
+            <table class="table table-condensed table-hover">
+                <tr>
+                    <th>部门序号</th>
+                    <th class="text-center">
+                        @Html.ActionLink("部门名称 ↓↑", "ISCIndex", new { sortOrder = ViewBag.NameSortParm, filter = ViewBag.CurrentFilter },
+                   new { @class = "text-center", style = "color:#428bca" })
+                    </th>
+
+                    <th>ExtDeptID</th>
+                    <th>编辑人员</th>
+                    <th>编辑时间</th>
+                    <th class="text-center">操作选项</th>
+                </tr>
+
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>@Html.DisplayFor(model => item.deptID)</td>
+                        <td>@Html.DisplayFor(model => item.deptName)</td>
+                        <td>@Html.DisplayFor(model => item.extDeptID)</td>
+                        <td>@Html.DisplayFor(model => item.updateMan)</td>
+                        <td>@Html.DisplayFor(model => item.updateTime)</td>
+                        <td class="text-center">
+                            @Html.ActionLink("详细", "ISCDetails", new { id = item.deptID }) |
+                            @Html.ActionLink("编辑", "ISCEdit", new { id = item.deptID }) |
+                            @Html.ActionLink("删除", "ISCDelete", new { id = item.deptID })
+                        </td>
+                    </tr>
+
+                }
+            </table>
+        </div>
+    </div>
+</body>
+分页 @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("ISCIndex", new { page, Hisorder = ViewBag.HisOrder, filter = ViewBag.CurrentFilter })
+, new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 100 })
+</html>

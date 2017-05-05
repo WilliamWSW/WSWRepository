@@ -1,0 +1,250 @@
+﻿@model PagedList.IPagedList<ISC_Web.ViewModels.VM_GoodsList>
+@using PagedList.Mvc;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+
+    <script src="~/Scripts/jquery-1.12.3.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <title>ISC Web System</title>
+</head>
+<body style="overflow:auto">
+    <div class="container-fluid" id="Dedetail">
+        <div id="query_hint" class="query_hint">
+            <img src="~/img/wait.gif" />正在查询，请稍等...
+        </div>
+        <div class="panel panel-default" style="margin-top:8px">
+            <div class="panel-heading" style="height:55px">
+
+                @using (Html.BeginForm("GoodsList", "BaseInfo", FormMethod.Get, new { @class = "form-inline" }))
+                {
+
+                    <div class="form-group">
+
+                        @Html.ActionLink("创建新商品", "CreateGoods", new
+                   {
+                       screen = ViewBag.Screen,
+                       order = ViewBag.Order,
+                       search = ViewBag.Search,
+                       filter = ViewBag.Filter,
+                       pagenum = ViewBag.PageNum
+                   }, new { @class = "btn btn-primary", @id = "btnumcreate" })&nbsp;&nbsp;
+
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"> 商品名称：</span>
+                            <input type="text" id="txtrmsearch" name="txtrmsearch" value="@ViewBag.Search" class="form-control" aria-describedby="basic-addon1">
+                            <span class="input-group-btn">
+                                <input type="submit" class="btn btn-default" id="btnrmsearch" name="btnrmsearch" value="查   询" onclick="show_query_hint()" />
+                                &nbsp; &nbsp;
+                            </span>
+                        </div>
+                    </div>
+
+                }
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+
+                    <table class="table table-bordered table-condensed table-hover" id="Dptable" style="white-space:nowrap;">
+                        <thead style="background: #EEEEEE;">
+                            <tr>
+                                <th class="text-center">商品编码</th>
+                                <th class="text-center">商品名称</th>
+                                <th class="text-center">通用名</th>
+                                <th class="text-center">厂牌</th>
+                                <th class="text-center">规格</th>
+                                <th class="text-center">单位</th>
+                                <th class="text-center">拼音码</th>
+                                <th class="text-center">商品类型</th>
+                                <th class="text-center">是否启用</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @if (Model.Count == 0)
+                            {
+                                <tr>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                </tr>
+
+                            }
+                            @foreach (var item in Model)
+                            {
+                                <tr onclick="rowclick(this);">
+                                    <td>@Html.DisplayFor(model => item.goodsID)</td>
+                                    <td>@Html.DisplayFor(model => item.goodsName)</td>
+                                    <td>@Html.DisplayFor(model => item.tradeName)</td>
+                                    <td>@Html.DisplayFor(model => item.factory)</td>
+                                    <td>@Html.DisplayFor(model => item.spec)</td>
+                                    <td>@Html.DisplayFor(model => item.unit)</td>
+                                    <td>@Html.DisplayFor(model => item.spellCode)</td>
+                                    <td>@Html.DisplayFor(model => item.goodsType)</td>
+                                    @if (item.valid == "1")
+                                    {
+                                        <td class="text-center">已启用</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-center">未启用</td>
+                                    }
+                                    <td class="text-center">
+
+                                        @Html.ActionLink("详细", "GoodsDetails",
+                                  new
+                                  {
+                                      id = item.goodsID,
+                                      screen = ViewBag.Screen,
+                                      order = ViewBag.Order,
+                                      search = ViewBag.Search,
+                                      filter = ViewBag.Filter,
+                                      pagenum = ViewBag.PageNum
+                                  }, new { @id = "lnklmdetail" }) |
+                                        @Html.ActionLink("编辑", "GoodsEdit",
+                                     new
+                                     {
+                                         id = item.goodsID,
+                                         screen = ViewBag.Screen,
+                                         search = ViewBag.Search,
+                                         pagenum = ViewBag.PageNum
+                                     }, new { @id = "btnumedit" }) |
+                                        @*@Html.ActionLink("删除", "ISCDelete", new { id = item.deptID })*@
+                                        <a data-toggle="modal" data-target="#myModal" href="#" id="btnumdelete">删除</a>
+                                    </td>
+                                </tr>
+                                }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div style="position:fixed;height:60px;bottom:0px;">
+            <form class="form-inline">
+                <div class="form-group">
+                    @*分页 @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount*@
+                    @Html.PagedListPager(Model, page => Url.Action("GoodsList", new { page, Hisorder = ViewBag.HisOrder, txtrmsearch = ViewBag.Search })
+, new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 20 })
+                </div>&nbsp;&nbsp;
+                <div class="form-group">
+                    总记录数:@Model.TotalItemCount 行
+                </div>
+            </form>
+        </div>
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="返回确认" aria-hidden="true" data-backdrop="true">
+            <div class="modal-dialog modal-sm" style="width:500px">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4>
+                            <strong class="modal-title text-primary" id="myModalLabel">
+                                删除确认
+                            </strong>
+                        </h4>
+                    </div>
+                    <div class="modal-body ">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="id" class="col-xs-3 col-md-3 text-right control-label">商品编码:</label>
+                                <div class="col-xs-7 col-md-7 text-left">
+                                    <input type="text" name="goodsid" id="goodsid" class="form-control" readonly />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="dename" class="col-xs-3 col-md-3 text-right control-label">商品名:</label>
+                                <div class="col-xs-7 col-md-7 text-left">
+                                    <input type="text" name="goodsname" id="goodsname" class="form-control" readonly />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="dename" class="col-xs-3 col-md-3 text-right control-label">商品规格:</label>
+                                <div class="col-xs-7 col-md-7 text-left">
+                                    <input type="text" name="spec" id="spec" class="form-control" readonly />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="dename" class="col-xs-3 col-md-3 text-right control-label">商品厂牌:</label>
+                                <div class="col-xs-7 col-md-7 text-left">
+                                    <input type="text" name="trademark" id="trademark" class="form-control" readonly />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-6 col-md-6"></div>
+                                <label class="col-xs-6 col-md-6">是否删除以上商品信息？</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-lg" onclick="urldelid()" id="btnumconfirm">确&nbsp;认</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal" id="btnumcancel">
+                            取&nbsp;消
+                        </button>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <script type="text/javascript">
+        var goodsid = null;
+        function rowclick(obj) {
+            goodsid = obj.cells[0].innerText;
+            goodsname = obj.cells[1].innerText;
+            spec= obj.cells[4].innerText;
+            trademark=obj.cells[3].innerText;
+
+        }
+
+        function DelID(obj){
+            $('#goodsid').val(goodsid);
+            $('#goodsname').val(goodsname);
+            $('#spec').val(spec);
+            $('#trademark').val(trademark);
+
+        }
+        function urldelid(){
+
+            window.location.href = "/BaseInfo/GoodsDel/" + goodsid;
+        }
+        $(function () { $('#myModal').on('show.bs.modal', DelID) });
+    </script>
+</body>
+</html>
+<script type="text/javascript">
+
+    //页面加载完成之后去掉Loading
+    $(document).ready(function () {
+        // parent.frames[0].queryHintCallback();
+        queryHintCallback();
+    });
+
+function show_query_hint(){
+    var query_hint = document.getElementById("query_hint");
+    query_hint.style.display="block";
+}
+
+
+
+function queryHintCallback(){
+    var query_hint = document.getElementById("query_hint");
+    query_hint.style.display="none";
+}
+</script>

@@ -1,0 +1,637 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="storage_newModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="bas_Department">
+      <EntityTypeMapping TypeName="storage_newModel.bas_Department">
+        <MappingFragment StoreEntitySet="bas_Department">
+          <ScalarProperty Name="deptID" ColumnName="deptID" />
+          <ScalarProperty Name="deptName" ColumnName="deptName" />
+          <ScalarProperty Name="extDeptID" ColumnName="extDeptID" />
+          <ScalarProperty Name="valid" ColumnName="valid" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bas_Goods">
+      <EntityTypeMapping TypeName="storage_newModel.bas_Goods">
+        <MappingFragment StoreEntitySet="bas_Goods">
+          <ScalarProperty Name="goodsID" ColumnName="goodsID" />
+          <ScalarProperty Name="extGoodsID" ColumnName="extGoodsID" />
+          <ScalarProperty Name="goodsName" ColumnName="goodsName" />
+          <ScalarProperty Name="tradeName" ColumnName="tradeName" />
+          <ScalarProperty Name="factory" ColumnName="factory" />
+          <ScalarProperty Name="spec" ColumnName="spec" />
+          <ScalarProperty Name="unit" ColumnName="unit" />
+          <ScalarProperty Name="spellCode" ColumnName="spellCode" />
+          <ScalarProperty Name="goodsType" ColumnName="goodsType" />
+          <ScalarProperty Name="extGoodsType" ColumnName="extGoodsType" />
+          <ScalarProperty Name="goodsCode" ColumnName="goodsCode" />
+          <ScalarProperty Name="supervisionCode" ColumnName="supervisionCode" />
+          <ScalarProperty Name="valid" ColumnName="valid" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bas_Locator">
+      <EntityTypeMapping TypeName="storage_newModel.bas_Locator">
+        <MappingFragment StoreEntitySet="bas_Locator">
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="locatorID" ColumnName="locatorID" />
+          <ScalarProperty Name="locatorName" ColumnName="locatorName" />
+          <ScalarProperty Name="lockType" ColumnName="lockType" />
+          <ScalarProperty Name="isMulti" ColumnName="isMulti" />
+          <ScalarProperty Name="isMixBatch" ColumnName="isMixBatch" />
+          <ScalarProperty Name="locatorType" ColumnName="locatorType" />
+          <ScalarProperty Name="cubage" ColumnName="cubage" />
+          <ScalarProperty Name="valid" ColumnName="valid" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bas_LocatorGoods">
+      <EntityTypeMapping TypeName="storage_newModel.bas_LocatorGoods">
+        <MappingFragment StoreEntitySet="bas_LocatorGoods">
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="locatorID" ColumnName="locatorID" />
+          <ScalarProperty Name="extLocatorID" ColumnName="extLocatorID" />
+          <ScalarProperty Name="goodsID" ColumnName="goodsID" />
+          <ScalarProperty Name="batchNo" ColumnName="batchNo" />
+          <ScalarProperty Name="maxNum" ColumnName="maxNum" />
+          <ScalarProperty Name="minNum" ColumnName="minNum" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bas_LocatorGoods_Test">
+      <EntityTypeMapping TypeName="storage_newModel.bas_LocatorGoods_Test">
+        <MappingFragment StoreEntitySet="bas_LocatorGoods_Test">
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="locatorID" ColumnName="locatorID" />
+          <ScalarProperty Name="extLocatorID" ColumnName="extLocatorID" />
+          <ScalarProperty Name="goodsID" ColumnName="goodsID" />
+          <ScalarProperty Name="batchNo" ColumnName="batchNo" />
+          <ScalarProperty Name="maxNum" ColumnName="maxNum" />
+          <ScalarProperty Name="minNum" ColumnName="minNum" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bas_User">
+      <EntityTypeMapping TypeName="storage_newModel.bas_User">
+        <MappingFragment StoreEntitySet="bas_User">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="loginName" ColumnName="loginName" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userPwd" ColumnName="userPwd" />
+          <ScalarProperty Name="spellCode" ColumnName="spellCode" />
+          <ScalarProperty Name="roleID" ColumnName="roleID" />
+          <ScalarProperty Name="userCard" ColumnName="userCard" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="deptID" ColumnName="deptID" />
+          <ScalarProperty Name="extUserID" ColumnName="extUserID" />
+          <ScalarProperty Name="valid" ColumnName="valid" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bas_UserFinger">
+      <EntityTypeMapping TypeName="storage_newModel.bas_UserFinger">
+        <MappingFragment StoreEntitySet="bas_UserFinger">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="fingerID" ColumnName="fingerID" />
+          <ScalarProperty Name="finger" ColumnName="finger" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bas_UserLocator">
+      <EntityTypeMapping TypeName="storage_newModel.bas_UserLocator">
+        <MappingFragment StoreEntitySet="bas_UserLocator">
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="locatorID" ColumnName="locatorID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="valid" ColumnName="valid" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="biz_GoodsAdjust">
+      <EntityTypeMapping TypeName="storage_newModel.biz_GoodsAdjust">
+        <MappingFragment StoreEntitySet="biz_GoodsAdjust">
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="adjustID" ColumnName="adjustID" />
+          <ScalarProperty Name="goodsID" ColumnName="goodsID" />
+          <ScalarProperty Name="batchNo" ColumnName="batchNo" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="RFID" ColumnName="RFID" />
+          <ScalarProperty Name="barCode" ColumnName="barCode" />
+          <ScalarProperty Name="locatorID" ColumnName="locatorID" />
+          <ScalarProperty Name="newLocatorID" ColumnName="newLocatorID" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="biz_GoodsLog">
+      <EntityTypeMapping TypeName="storage_newModel.biz_GoodsLog">
+        <MappingFragment StoreEntitySet="biz_GoodsLog">
+          <ScalarProperty Name="logID" ColumnName="logID" />
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="operationtype" ColumnName="operationtype" />
+          <ScalarProperty Name="goodsID" ColumnName="goodsID" />
+          <ScalarProperty Name="batchNo" ColumnName="batchNo" />
+          <ScalarProperty Name="expiryDate" ColumnName="expiryDate" />
+          <ScalarProperty Name="productDate" ColumnName="productDate" />
+          <ScalarProperty Name="locatorID" ColumnName="locatorID" />
+          <ScalarProperty Name="RFID" ColumnName="RFID" />
+          <ScalarProperty Name="barCode" ColumnName="barCode" />
+          <ScalarProperty Name="actualNum" ColumnName="actualNum" />
+          <ScalarProperty Name="operator1" ColumnName="operator1" />
+          <ScalarProperty Name="operator2" ColumnName="operator2" />
+          <ScalarProperty Name="operator3" ColumnName="operator3" />
+          <ScalarProperty Name="startTime" ColumnName="startTime" />
+          <ScalarProperty Name="endTime" ColumnName="endTime" />
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
+          <ScalarProperty Name="detailID" ColumnName="detailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="biz_InStock">
+      <EntityTypeMapping TypeName="storage_newModel.biz_InStock">
+        <MappingFragment StoreEntitySet="biz_InStock">
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
+          <ScalarProperty Name="extOrderID" ColumnName="extOrderID" />
+          <ScalarProperty Name="createTime" ColumnName="createTime" />
+          <ScalarProperty Name="creator" ColumnName="creator" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="AddtionID" ColumnName="AddtionID" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="biz_InStockDt">
+      <EntityTypeMapping TypeName="storage_newModel.biz_InStockDt">
+        <MappingFragment StoreEntitySet="biz_InStockDt">
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
+          <ScalarProperty Name="detailID" ColumnName="detailID" />
+          <ScalarProperty Name="goodsID" ColumnName="goodsID" />
+          <ScalarProperty Name="batchNo" ColumnName="batchNo" />
+          <ScalarProperty Name="expiryDate" ColumnName="expiryDate" />
+          <ScalarProperty Name="productDate" ColumnName="productDate" />
+          <ScalarProperty Name="orderNum" ColumnName="orderNum" />
+          <ScalarProperty Name="actualNum" ColumnName="actualNum" />
+          <ScalarProperty Name="RFIDCode" ColumnName="RFIDCode" />
+          <ScalarProperty Name="barcode" ColumnName="barcode" />
+          <ScalarProperty Name="locatorID" ColumnName="locatorID" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+          <ScalarProperty Name="outOrderID" ColumnName="outOrderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="biz_InStockDt_Test">
+      <EntityTypeMapping TypeName="storage_newModel.biz_InStockDt_Test">
+        <MappingFragment StoreEntitySet="biz_InStockDt_Test">
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
+          <ScalarProperty Name="detailID" ColumnName="detailID" />
+          <ScalarProperty Name="goodsID" ColumnName="goodsID" />
+          <ScalarProperty Name="batchNo" ColumnName="batchNo" />
+          <ScalarProperty Name="expiryDate" ColumnName="expiryDate" />
+          <ScalarProperty Name="productDate" ColumnName="productDate" />
+          <ScalarProperty Name="orderNum" ColumnName="orderNum" />
+          <ScalarProperty Name="actualNum" ColumnName="actualNum" />
+          <ScalarProperty Name="RFIDCode" ColumnName="RFIDCode" />
+          <ScalarProperty Name="barcode" ColumnName="barcode" />
+          <ScalarProperty Name="locatorID" ColumnName="locatorID" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+          <ScalarProperty Name="outOrderID" ColumnName="outOrderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="biz_Inventory">
+      <EntityTypeMapping TypeName="storage_newModel.biz_Inventory">
+        <MappingFragment StoreEntitySet="biz_Inventory">
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
+          <ScalarProperty Name="extOrderID" ColumnName="extOrderID" />
+          <ScalarProperty Name="createTime" ColumnName="createTime" />
+          <ScalarProperty Name="creator" ColumnName="creator" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="biz_InventoryDt">
+      <EntityTypeMapping TypeName="storage_newModel.biz_InventoryDt">
+        <MappingFragment StoreEntitySet="biz_InventoryDt">
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
+          <ScalarProperty Name="detailID" ColumnName="detailID" />
+          <ScalarProperty Name="goodsID" ColumnName="goodsID" />
+          <ScalarProperty Name="batchNo" ColumnName="batchNo" />
+          <ScalarProperty Name="expiryDate" ColumnName="expiryDate" />
+          <ScalarProperty Name="productDate" ColumnName="productDate" />
+          <ScalarProperty Name="orderNum" ColumnName="orderNum" />
+          <ScalarProperty Name="actualNum" ColumnName="actualNum" />
+          <ScalarProperty Name="RFIDCode" ColumnName="RFIDCode" />
+          <ScalarProperty Name="barcode" ColumnName="barcode" />
+          <ScalarProperty Name="locatorID" ColumnName="locatorID" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="biz_LossReport">
+      <EntityTypeMapping TypeName="storage_newModel.biz_LossReport">
+        <MappingFragment StoreEntitySet="biz_LossReport">
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
+          <ScalarProperty Name="detailID" ColumnName="detailID" />
+          <ScalarProperty Name="goodsID" ColumnName="goodsID" />
+          <ScalarProperty Name="batchNo" ColumnName="batchNo" />
+          <ScalarProperty Name="expiryDate" ColumnName="expiryDate" />
+          <ScalarProperty Name="productDate" ColumnName="productDate" />
+          <ScalarProperty Name="lossNum" ColumnName="lossNum" />
+          <ScalarProperty Name="RFIDCode" ColumnName="RFIDCode" />
+          <ScalarProperty Name="barcode" ColumnName="barcode" />
+          <ScalarProperty Name="locatorID" ColumnName="locatorID" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="biz_OutStock">
+      <EntityTypeMapping TypeName="storage_newModel.biz_OutStock">
+        <MappingFragment StoreEntitySet="biz_OutStock">
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
+          <ScalarProperty Name="extOrderID" ColumnName="extOrderID" />
+          <ScalarProperty Name="createTime" ColumnName="createTime" />
+          <ScalarProperty Name="creator" ColumnName="creator" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="AddtionID" ColumnName="AddtionID" />
+          <ScalarProperty Name="ScanCode" ColumnName="ScanCode" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="biz_OutStockAddtion">
+      <EntityTypeMapping TypeName="storage_newModel.biz_OutStockAddtion">
+        <MappingFragment StoreEntitySet="biz_OutStockAddtion">
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="addtionID" ColumnName="addtionID" />
+          <ScalarProperty Name="addtionTime" ColumnName="addtionTime" />
+          <ScalarProperty Name="patientID" ColumnName="patientID" />
+          <ScalarProperty Name="patientName" ColumnName="patientName" />
+          <ScalarProperty Name="patientSpellCode" ColumnName="patientSpellCode" />
+          <ScalarProperty Name="patientAge" ColumnName="patientAge" />
+          <ScalarProperty Name="patientSex" ColumnName="patientSex" />
+          <ScalarProperty Name="patientDept" ColumnName="patientDept" />
+          <ScalarProperty Name="bedNo" ColumnName="bedNo" />
+          <ScalarProperty Name="operateName" ColumnName="operateName" />
+          <ScalarProperty Name="execDept" ColumnName="execDept" />
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="biz_OutStockDt">
+      <EntityTypeMapping TypeName="storage_newModel.biz_OutStockDt">
+        <MappingFragment StoreEntitySet="biz_OutStockDt">
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
+          <ScalarProperty Name="detailID" ColumnName="detailID" />
+          <ScalarProperty Name="goodsID" ColumnName="goodsID" />
+          <ScalarProperty Name="batchNo" ColumnName="batchNo" />
+          <ScalarProperty Name="expiryDate" ColumnName="expiryDate" />
+          <ScalarProperty Name="productDate" ColumnName="productDate" />
+          <ScalarProperty Name="orderNum" ColumnName="orderNum" />
+          <ScalarProperty Name="actualNum" ColumnName="actualNum" />
+          <ScalarProperty Name="RFIDCode" ColumnName="RFIDCode" />
+          <ScalarProperty Name="barcode" ColumnName="barcode" />
+          <ScalarProperty Name="locatorID" ColumnName="locatorID" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="biz_OutStockDt_Test">
+      <EntityTypeMapping TypeName="storage_newModel.biz_OutStockDt_Test">
+        <MappingFragment StoreEntitySet="biz_OutStockDt_Test">
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
+          <ScalarProperty Name="detailID" ColumnName="detailID" />
+          <ScalarProperty Name="goodsID" ColumnName="goodsID" />
+          <ScalarProperty Name="batchNo" ColumnName="batchNo" />
+          <ScalarProperty Name="expiryDate" ColumnName="expiryDate" />
+          <ScalarProperty Name="productDate" ColumnName="productDate" />
+          <ScalarProperty Name="orderNum" ColumnName="orderNum" />
+          <ScalarProperty Name="actualNum" ColumnName="actualNum" />
+          <ScalarProperty Name="RFIDCode" ColumnName="RFIDCode" />
+          <ScalarProperty Name="barcode" ColumnName="barcode" />
+          <ScalarProperty Name="locatorID" ColumnName="locatorID" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="biz_RFIDLog">
+      <EntityTypeMapping TypeName="storage_newModel.biz_RFIDLog">
+        <MappingFragment StoreEntitySet="biz_RFIDLog">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="orderNo" ColumnName="orderNo" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="RFID" ColumnName="RFID" />
+          <ScalarProperty Name="locatorID" ColumnName="locatorID" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="biz_Stock">
+      <EntityTypeMapping TypeName="storage_newModel.biz_Stock">
+        <MappingFragment StoreEntitySet="biz_Stock">
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="goodsID" ColumnName="goodsID" />
+          <ScalarProperty Name="batchNo" ColumnName="batchNo" />
+          <ScalarProperty Name="expiryDate" ColumnName="expiryDate" />
+          <ScalarProperty Name="productDate" ColumnName="productDate" />
+          <ScalarProperty Name="locatorID" ColumnName="locatorID" />
+          <ScalarProperty Name="RFID" ColumnName="RFID" />
+          <ScalarProperty Name="barCode" ColumnName="barCode" />
+          <ScalarProperty Name="bizNum" ColumnName="bizNum" />
+          <ScalarProperty Name="actualNum" ColumnName="actualNum" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="interface_InStock_RF">
+      <EntityTypeMapping TypeName="storage_newModel.interface_InStock_RF">
+        <MappingFragment StoreEntitySet="interface_InStock_RF">
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
+          <ScalarProperty Name="orderdetailID" ColumnName="orderdetailID" />
+          <ScalarProperty Name="supplier" ColumnName="supplier" />
+          <ScalarProperty Name="deptID" ColumnName="deptID" />
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="goodsID" ColumnName="goodsID" />
+          <ScalarProperty Name="validityDate" ColumnName="validityDate" />
+          <ScalarProperty Name="produceDate" ColumnName="produceDate" />
+          <ScalarProperty Name="batchNo" ColumnName="batchNo" />
+          <ScalarProperty Name="num" ColumnName="num" />
+          <ScalarProperty Name="RFID" ColumnName="RFID" />
+          <ScalarProperty Name="creator" ColumnName="creator" />
+          <ScalarProperty Name="extLocatorID" ColumnName="extLocatorID" />
+          <ScalarProperty Name="orderTime" ColumnName="orderTime" />
+          <ScalarProperty Name="receiveTime" ColumnName="receiveTime" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="interface_OutStock">
+      <EntityTypeMapping TypeName="storage_newModel.interface_OutStock">
+        <MappingFragment StoreEntitySet="interface_OutStock">
+          <ScalarProperty Name="PICKING_CODE" ColumnName="PICKING_CODE" />
+          <ScalarProperty Name="STORE_ID" ColumnName="STORE_ID" />
+          <ScalarProperty Name="LOCATOR_ID" ColumnName="LOCATOR_ID" />
+          <ScalarProperty Name="DRUG_ID" ColumnName="DRUG_ID" />
+          <ScalarProperty Name="DRUG_NAME" ColumnName="DRUG_NAME" />
+          <ScalarProperty Name="SPEC" ColumnName="SPEC" />
+          <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+          <ScalarProperty Name="DETAIL_NUM" ColumnName="DETAIL_NUM" />
+          <ScalarProperty Name="BATCH_NUM" ColumnName="BATCH_NUM" />
+          <ScalarProperty Name="NUM" ColumnName="NUM" />
+          <ScalarProperty Name="Insertdate" ColumnName="Insertdate" />
+          <ScalarProperty Name="DataUP" ColumnName="DataUP" />
+          <ScalarProperty Name="SCANCODE" ColumnName="SCANCODE" />
+          <ScalarProperty Name="patientID" ColumnName="patientID" />
+          <ScalarProperty Name="patientName" ColumnName="patientName" />
+          <ScalarProperty Name="patientAge" ColumnName="patientAge" />
+          <ScalarProperty Name="patientSex" ColumnName="patientSex" />
+          <ScalarProperty Name="createTime" ColumnName="createTime" />
+          <ScalarProperty Name="creator" ColumnName="creator" />
+          <ScalarProperty Name="expiryDate" ColumnName="expiryDate" />
+          <ScalarProperty Name="productDate" ColumnName="productDate" />
+          <ScalarProperty Name="patientDept" ColumnName="patientDept" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="interface_OutStock_RF">
+      <EntityTypeMapping TypeName="storage_newModel.interface_OutStock_RF">
+        <MappingFragment StoreEntitySet="interface_OutStock_RF">
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
+          <ScalarProperty Name="patientID" ColumnName="patientID" />
+          <ScalarProperty Name="patientName" ColumnName="patientName" />
+          <ScalarProperty Name="patientSpellCode" ColumnName="patientSpellCode" />
+          <ScalarProperty Name="patientAge" ColumnName="patientAge" />
+          <ScalarProperty Name="patientSex" ColumnName="patientSex" />
+          <ScalarProperty Name="patientDept" ColumnName="patientDept" />
+          <ScalarProperty Name="bedNo" ColumnName="bedNo" />
+          <ScalarProperty Name="operateName" ColumnName="operateName" />
+          <ScalarProperty Name="execDept" ColumnName="execDept" />
+          <ScalarProperty Name="creator" ColumnName="creator" />
+          <ScalarProperty Name="createTime" ColumnName="createTime" />
+          <ScalarProperty Name="receiveTime" ColumnName="receiveTime" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_Camera">
+      <EntityTypeMapping TypeName="storage_newModel.sys_Camera">
+        <MappingFragment StoreEntitySet="sys_Camera">
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="cameraID" ColumnName="cameraID" />
+          <ScalarProperty Name="cameraIP" ColumnName="cameraIP" />
+          <ScalarProperty Name="valid" ColumnName="valid" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_Hospital">
+      <EntityTypeMapping TypeName="storage_newModel.sys_Hospital">
+        <MappingFragment StoreEntitySet="sys_Hospital">
+          <ScalarProperty Name="hospitalID" ColumnName="hospitalID" />
+          <ScalarProperty Name="hospitalName" ColumnName="hospitalName" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_LocatorSet">
+      <EntityTypeMapping TypeName="storage_newModel.sys_LocatorSet">
+        <MappingFragment StoreEntitySet="sys_LocatorSet">
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="locatorID" ColumnName="locatorID" />
+          <ScalarProperty Name="plateAddress" ColumnName="plateAddress" />
+          <ScalarProperty Name="lockAddress" ColumnName="lockAddress" />
+          <ScalarProperty Name="RFIDIP" ColumnName="RFIDIP" />
+          <ScalarProperty Name="antennasID" ColumnName="antennasID" />
+          <ScalarProperty Name="antennasGL" ColumnName="antennasGL" />
+          <ScalarProperty Name="antennasLMD" ColumnName="antennasLMD" />
+          <ScalarProperty Name="uniqueCode" ColumnName="uniqueCode" />
+          <ScalarProperty Name="valid" ColumnName="valid" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_Log">
+      <EntityTypeMapping TypeName="storage_newModel.sys_Log">
+        <MappingFragment StoreEntitySet="sys_Log">
+          <ScalarProperty Name="logID" ColumnName="logID" />
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="clientIP" ColumnName="clientIP" />
+          <ScalarProperty Name="logType" ColumnName="logType" />
+          <ScalarProperty Name="moduleID" ColumnName="moduleID" />
+          <ScalarProperty Name="operator" ColumnName="operator" />
+          <ScalarProperty Name="operatorTime" ColumnName="operatorTime" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_Module">
+      <EntityTypeMapping TypeName="storage_newModel.sys_Module">
+        <MappingFragment StoreEntitySet="sys_Module">
+          <ScalarProperty Name="moduleID" ColumnName="moduleID" />
+          <ScalarProperty Name="moduleName" ColumnName="moduleName" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="valid" ColumnName="valid" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_Parameter">
+      <EntityTypeMapping TypeName="storage_newModel.sys_Parameter">
+        <MappingFragment StoreEntitySet="sys_Parameter">
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="parameterID" ColumnName="parameterID" />
+          <ScalarProperty Name="parameterName" ColumnName="parameterName" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="valid" ColumnName="valid" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_Role">
+      <EntityTypeMapping TypeName="storage_newModel.sys_Role">
+        <MappingFragment StoreEntitySet="sys_Role">
+          <ScalarProperty Name="roleID" ColumnName="roleID" />
+          <ScalarProperty Name="roleName" ColumnName="roleName" />
+          <ScalarProperty Name="valid" ColumnName="valid" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_RoleModule">
+      <EntityTypeMapping TypeName="storage_newModel.sys_RoleModule">
+        <MappingFragment StoreEntitySet="sys_RoleModule">
+          <ScalarProperty Name="roleID" ColumnName="roleID" />
+          <ScalarProperty Name="moduleID" ColumnName="moduleID" />
+          <ScalarProperty Name="valid" ColumnName="valid" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_Terminal">
+      <EntityTypeMapping TypeName="storage_newModel.sys_Terminal">
+        <MappingFragment StoreEntitySet="sys_Terminal">
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="terminalName" ColumnName="terminalName" />
+          <ScalarProperty Name="terminalMAC" ColumnName="terminalMAC" />
+          <ScalarProperty Name="terminalIP" ColumnName="terminalIP" />
+          <ScalarProperty Name="terminalType" ColumnName="terminalType" />
+          <ScalarProperty Name="openMode" ColumnName="openMode" />
+          <ScalarProperty Name="departmentID" ColumnName="departmentID" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sys_TypeDic">
+      <EntityTypeMapping TypeName="storage_newModel.sys_TypeDic">
+        <MappingFragment StoreEntitySet="sys_TypeDic">
+          <ScalarProperty Name="typeID" ColumnName="typeID" />
+          <ScalarProperty Name="typeName" ColumnName="typeName" />
+          <ScalarProperty Name="detailID" ColumnName="detailID" />
+          <ScalarProperty Name="detailName" ColumnName="detailName" />
+          <ScalarProperty Name="valid" ColumnName="valid" />
+          <ScalarProperty Name="updateMan" ColumnName="updateMan" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bas_UserRoots">
+      <EntityTypeMapping TypeName="storage_newModel.bas_UserRoots">
+        <MappingFragment StoreEntitySet="bas_UserRoots">
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="valid" ColumnName="valid" />
+          <ScalarProperty Name="isadmin" ColumnName="isadmin" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="biz_RFID_IF_History">
+      <EntityTypeMapping TypeName="storage_newModel.biz_RFID_IF_History">
+        <MappingFragment StoreEntitySet="biz_RFID_IF_History">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Event" ColumnName="Event" />
+          <ScalarProperty Name="LogText" ColumnName="LogText" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="interface_backSPD_RF">
+      <EntityTypeMapping TypeName="storage_newModel.interface_backSPD_RF">
+        <MappingFragment StoreEntitySet="interface_backSPD_RF">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="goodsID" ColumnName="goodsID" />
+          <ScalarProperty Name="RFID" ColumnName="RFID" />
+          <ScalarProperty Name="terminalID" ColumnName="terminalID" />
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
+          <ScalarProperty Name="patientID" ColumnName="patientID" />
+          <ScalarProperty Name="patientName" ColumnName="patientName" />
+          <ScalarProperty Name="patientAge" ColumnName="patientAge" />
+          <ScalarProperty Name="patientSex" ColumnName="patientSex" />
+          <ScalarProperty Name="patientDept" ColumnName="patientDept" />
+          <ScalarProperty Name="creator" ColumnName="creator" />
+          <ScalarProperty Name="createTime" ColumnName="createTime" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

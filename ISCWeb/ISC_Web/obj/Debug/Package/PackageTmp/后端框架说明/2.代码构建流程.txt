@@ -1,0 +1,65 @@
+
+
+架构使用流程：
+
+1. 在Models创建实体对象，可以选择用FirstCode或FirstDataBase两种模式，注意添加相关字段属性描述，[Key] [Column(Order = 1)]且数据库表必须
+   要有主键，否则EF会报错。
+
+2. 在DAL/UnitOfWork.cs文件中，添加相应的Repository抽象工作单元对象，具体规则在UnitOfWork文件中有描述。
+
+3. 编写业务逻辑；在Controllers层定义业务分发Action，在Service层定义具体实现的方法，通过Controllers->Action->Service->UnitOfWork->Repository
+   实现业务需求。 访问数据库有以下几种方式：
+   a). Lambda表达式
+                 var userToUpdate = db.Users
+                .Include(u => u.UserRoles)
+                .Where(u => u.Id == id)
+                .Single();
+
+   b).Linq to SQL entity
+
+     User userToUpdate = db.Users.SqlQuery("select * from [ODS].[dbo].[User] where id=@id", pp).SingleOrDefault();
+
+
+   c).Linq to SQL enumerable
+      (多表连接查询)
+            var doubleQuery = from a in dt_A.AsEnumerable()
+                              from b in dt_B.AsEnumerable()
+                              where a.Field<string>("Name") == b.Field<string>("Name") &&
+                                    a.Field<int>("Age") != b.Field<int>("Age")
+                              select new
+                              {
+                                  Name = a.Field<string>("Name"),
+                                  A_Age = a.Field<int>("Age"),
+                                  B_Age = b.Field<int>("Age")
+                              }; 
+	d).纯SQL Command
+	User userToUpdate = db.Database.SqlQuery("select * from [ODS].[dbo].[User] where id=@id", pp);
+
+	以上几种方式根据实际情况择优使用，推荐使用Lambda和Linq方式，EF会自动优化语句并且利用EF缓存加载功能减少数据库访问次数，其它方式会失去面向对象或
+	面向服务的真正意义，反而增加后端框架多余的负担，不利于后期维护和功能扩展。
+
+4. 根据业务逻辑层返回的数据结果集设计前端UI界面View。
+   具体方法： 右击Controllers中的Action方法，选择添加视图，框架会自动在Views目录下自动创建以Controllers命名的目录和对应Action命名的*.cshtml。
+   注意：编写VIews请按照/Views/响应式模板.cshtml格式套用，从而启用响应式布局。
+
+5. 本项目前端UI框架是BootStrap3,此框架已包含80%常用CSS样式，可以直接套用Bootstrap3的样式减少手动编写CSS的工作量，细节调整请自己另编写CSS文件
+   放在Context目录下。在前端界面布局时可以使用BootStrap的栅格功能，布局非常方便且支持响应式布局。
+
+6. UnitOfWork工作单元实现了EF事务管理和Repository仓储管理模式，使用的时候请注意在业务逻辑完成后提交到数据库并回收资源。
+
+   public static void Update(int id, string mm)
+        {
+            using (UnitOfWork uw = new UnitOfWork())
+            {
+                User dd = uw.UserRepository.SelectByWhere(filters: oo => oo.Id == id).FirstOrDefault();
+                dd.Name = mm;
+                uw.Commit();
+				//使用了Using，就不必再次使用Dispose。
+                // uw.Dispose();
+            }
+        }
+              
+  
+  研发部 王思伟 2017年3月31日
+
+

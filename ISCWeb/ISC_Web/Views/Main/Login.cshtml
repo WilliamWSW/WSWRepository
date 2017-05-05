@@ -1,0 +1,67 @@
+﻿@model ISC_Web.Models.bas_User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>ISC系统登录</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/signin.css" rel="stylesheet" />
+    <style>
+        ::-webkit-input-placeholder { /* WebKit browsers */ 
+color:white; 
+} 
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */ 
+color:white; 
+} 
+::-moz-placeholder { /* Mozilla Firefox 19+ */ 
+color:white; 
+} 
+:-ms-input-placeholder { /* Internet Explorer 10+ */ 
+color:white; 
+} 
+    </style>
+</head>
+<body style="background-image: url('../../img/后台登录界面3.jpg');background-position:center;background-repeat:no-repeat;background-attachment:fixed;background-size:cover;-webkit-background-composite:border">
+       <div class="container-fluid">
+           <div style="text-align:center;margin:10px">
+               <img src="~/img/logo.png" height="146" width="106"/>
+           </div>
+          
+               <br />
+           <div style="color:white">
+               <h2 class="form-signin-heading text-center">重庆医药ISC耗材管理系统</h2>
+           </div>
+              <br /><br />
+
+               @using (Html.BeginForm("Login", "Main", FormMethod.Post, new { @class = "form-signin" }))
+               {
+                  
+
+                   <input type="text" class="form-control" id="UserName" name="UserName" placeholder="用户名" style= "background-color:transparent;color:white; height:45px;line-height:8px" required>
+                   @Html.ValidationMessageFor(model => model.loginName)
+                   <br />
+                   <input type="password" class="form-control" id="Password" name="Password" placeholder="密   码" style= "background-color:transparent;color:white;height:45px;line-height:8px " required>
+                   <br />
+                   <label style="color:white">
+                       <input type="checkbox" id="ckbRememberMe" name="ckbRememberMe" value="remember-me"> 记住我
+                   </label>
+                   <br /><br />
+                   <button type="submit" class="btn btn-lg btn-default btn-block" id="LoginButton">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</button>
+                   <br />
+                   <div id="LoginState" class="text-warning">
+                       <h4>@ViewBag.LoginError</h4>
+                       <h4>@ViewBag.CurrentTime</h4>
+                   </div>
+               }
+
+           </div>
+           
+</body>
+</html>

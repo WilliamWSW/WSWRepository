@@ -1,0 +1,42 @@
+
+
+后端MVC+EF架构目录说明：
+
+---App_Start：MVC路由配置文件。
+
+---Content:CSS样式文件存放目录。
+
+---Controllers:MVC控制器目录，本项目是按模块名划分，业务逻辑在Service层实现，Controllers层只有参数构造和ViewBag相关组织代码，层次清晰，代码整洁。
+
+---DAL:数据库访问类，本项目中存放了ISC数据库EF连接对象和UnitOfWork工作单元抽象类，可自定义其它数据库连接对象，实现分布式管理。
+
+---Helpers:自定义MVC Htmlhelper，减少View页面Html混合代码，目前只定义了submit和image类型，可根据自己需求自定义。
+
+---Models:实体对象目录，本项目所有Models是根据数据库Storage_new表来建立，数据库每张表必须要有主键，否则EF会报错。
+
+---Repository:仓储类库，本项目实现Repository管理模式，其中包括公共IRepository和私有I***Repository接口及实现子类，便于代码重用和后期功能扩展。
+
+---Scripts:JS文件存放目录。
+
+---Service:业务服务层，所有业务逻辑在Service层实现，调用过程：Controllers->Service->UnitOfWork->Repository->EF->DataBase，避免Controllers层过于
+           臃肿，同时实现业务逻辑层和数据操作层，数据访问层的分离。
+
+---ViewModels:当View使用的Models不满足需求时，可以通过自定义ViewModels解耦和实现自定义功能。
+
+---Views:MVC的视图目录，包括各个Controllers对应的视图和框架布局。
+
+---Web.config Web项目配置文件，已经定义了Storage_new和本地库的SQL Server连接字符串、EF设置、权限设置相关的配置信息，如无必要，请勿修改！
+
+架构流程：
+
+Controllers->Action->Service->UnitOfWork->public Repository or private Repository->EF->Views->User UI
+
+Service分离了业务分发和业务实现，让Action更简洁，代码可读性高。
+UnitOfWork实现了EF事务管理功能和Rpository仓储管理模式。针对特殊的实体比如User，可以自定义私有UserRepository类，编写GetByUserName(String name)这样
+的私有方法，同时UserRepository继承了公共的IRepository接口，可以同时使用Repository的所有方法，代码重用度高。实现了Repository仓储管理模式，项目后期
+Repository越丰富，运维和功能扩展越简单方便，同时保持了框架各层的松耦合状态，层次清晰，各模块的程序代码管理起来更加轻松，功能单元测试和自动化测试
+更加Easy。
+
+
+
+研发部 王思伟 2017年3月31日

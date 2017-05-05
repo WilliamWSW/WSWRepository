@@ -1,0 +1,729 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="storage_newModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="bas_Department">
+    <Key>
+      <PropertyRef Name="deptID" />
+    </Key>
+    <Property Name="deptID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="deptName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="extDeptID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="valid" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bas_Goods">
+    <Key>
+      <PropertyRef Name="goodsID" />
+    </Key>
+    <Property Name="goodsID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="extGoodsID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="goodsName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="tradeName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="factory" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="spec" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="unit" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="spellCode" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="goodsType" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="extGoodsType" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="goodsCode" Type="varchar" MaxLength="20" />
+    <Property Name="supervisionCode" Type="varchar" MaxLength="20" />
+    <Property Name="valid" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bas_Locator">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="locatorID" />
+    </Key>
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="locatorID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="locatorName" Type="varchar" MaxLength="20" />
+    <Property Name="lockType" Type="varchar" MaxLength="20" />
+    <Property Name="isMulti" Type="varchar" MaxLength="20" />
+    <Property Name="isMixBatch" Type="varchar" MaxLength="20" />
+    <Property Name="locatorType" Type="varchar" MaxLength="20" />
+    <Property Name="cubage" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="valid" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bas_LocatorGoods">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="locatorID" />
+      <PropertyRef Name="goodsID" />
+      <PropertyRef Name="batchNo" />
+    </Key>
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="locatorID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="extLocatorID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="goodsID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="batchNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="maxNum" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="minNum" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bas_LocatorGoods_Test">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="locatorID" />
+      <PropertyRef Name="goodsID" />
+      <PropertyRef Name="batchNo" />
+    </Key>
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="locatorID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="extLocatorID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="goodsID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="batchNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="maxNum" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="minNum" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bas_User">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="loginName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="userName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="userPwd" Type="varchar" MaxLength="50" />
+    <Property Name="spellCode" Type="varchar" MaxLength="20" />
+    <Property Name="roleID" Type="varchar" MaxLength="20" />
+    <Property Name="userCard" Type="varchar" MaxLength="20" />
+    <Property Name="telephone" Type="varchar" MaxLength="11" />
+    <Property Name="deptID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="extUserID" Type="varchar" MaxLength="20" />
+    <Property Name="valid" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bas_UserFinger">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="userID" />
+      <PropertyRef Name="fingerID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="fingerID" Type="int" Nullable="false" />
+    <Property Name="finger" Type="varchar(max)" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bas_UserLocator">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="locatorID" />
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="locatorID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="userID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="valid" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“storage_new.dbo.bas_UserRoots”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="bas_UserRoots">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="userID" />
+      <PropertyRef Name="valid" />
+      <PropertyRef Name="isadmin" />
+      <PropertyRef Name="updateTime" />
+    </Key>
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="userID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="valid" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="isadmin" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="biz_GoodsAdjust">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="adjustID" />
+    </Key>
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="adjustID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="goodsID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="batchNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="type" Type="int" Nullable="false" />
+    <Property Name="RFID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="barCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="locatorID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="newLocatorID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="biz_GoodsLog">
+    <Key>
+      <PropertyRef Name="logID" />
+    </Key>
+    <Property Name="logID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="operationtype" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="goodsID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="batchNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="expiryDate" Type="datetime" Nullable="false" />
+    <Property Name="productDate" Type="datetime" Nullable="false" />
+    <Property Name="locatorID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RFID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="barCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="actualNum" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="operator1" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="operator2" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="operator3" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="startTime" Type="datetime" />
+    <Property Name="endTime" Type="datetime" />
+    <Property Name="orderID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="detailID" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="biz_InStock">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="orderID" />
+    </Key>
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="orderID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="extOrderID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="createTime" Type="datetime" Nullable="false" />
+    <Property Name="creator" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="AddtionID" Type="varchar" MaxLength="20" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="biz_InStockDt">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="orderID" />
+      <PropertyRef Name="detailID" />
+    </Key>
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="orderID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="detailID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="goodsID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="batchNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="expiryDate" Type="datetime" Nullable="false" />
+    <Property Name="productDate" Type="datetime" Nullable="false" />
+    <Property Name="orderNum" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="actualNum" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="RFIDCode" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="barcode" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="locatorID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="20" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" />
+    <Property Name="updateTime" Type="datetime" />
+    <Property Name="outOrderID" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="biz_InStockDt_Test">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="orderID" />
+      <PropertyRef Name="detailID" />
+    </Key>
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="orderID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="detailID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="goodsID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="batchNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="expiryDate" Type="datetime" Nullable="false" />
+    <Property Name="productDate" Type="datetime" Nullable="false" />
+    <Property Name="orderNum" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="actualNum" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="RFIDCode" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="barcode" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="locatorID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="20" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" />
+    <Property Name="updateTime" Type="datetime" />
+    <Property Name="outOrderID" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="biz_Inventory">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="orderID" />
+    </Key>
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="orderID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="extOrderID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="createTime" Type="datetime" Nullable="false" />
+    <Property Name="creator" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="biz_InventoryDt">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="orderID" />
+      <PropertyRef Name="detailID" />
+    </Key>
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="orderID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="detailID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="goodsID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="batchNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="expiryDate" Type="datetime" />
+    <Property Name="productDate" Type="datetime" />
+    <Property Name="orderNum" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="actualNum" Type="numeric" Precision="18" Scale="4" />
+    <Property Name="RFIDCode" Type="varchar" MaxLength="100" />
+    <Property Name="barcode" Type="varchar" MaxLength="100" />
+    <Property Name="locatorID" Type="varchar" MaxLength="50" />
+    <Property Name="status" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="biz_LossReport">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="orderID" />
+      <PropertyRef Name="detailID" />
+    </Key>
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="orderID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="detailID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="goodsID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="batchNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="expiryDate" Type="datetime" Nullable="false" />
+    <Property Name="productDate" Type="datetime" Nullable="false" />
+    <Property Name="lossNum" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="RFIDCode" Type="varchar" MaxLength="100" />
+    <Property Name="barcode" Type="varchar" MaxLength="100" />
+    <Property Name="locatorID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="biz_OutStock">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="orderID" />
+    </Key>
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="orderID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="extOrderID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="createTime" Type="datetime" Nullable="false" />
+    <Property Name="creator" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="AddtionID" Type="varchar" MaxLength="20" />
+    <Property Name="ScanCode" Type="varchar" MaxLength="20" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="biz_OutStockAddtion">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="addtionID" />
+    </Key>
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="addtionID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="addtionTime" Type="datetime" Nullable="false" />
+    <Property Name="patientID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="patientName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="patientSpellCode" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="patientAge" Type="int" Nullable="false" />
+    <Property Name="patientSex" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="patientDept" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="bedNo" Type="varchar" MaxLength="50" />
+    <Property Name="operateName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="execDept" Type="varchar" MaxLength="50" />
+    <Property Name="orderID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="biz_OutStockDt">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="orderID" />
+      <PropertyRef Name="detailID" />
+    </Key>
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="orderID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="detailID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="goodsID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="batchNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="expiryDate" Type="datetime" />
+    <Property Name="productDate" Type="datetime" />
+    <Property Name="orderNum" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="actualNum" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="RFIDCode" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="barcode" Type="varchar" MaxLength="100" />
+    <Property Name="locatorID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="20" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" />
+    <Property Name="updateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="biz_OutStockDt_Test">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="orderID" />
+      <PropertyRef Name="detailID" />
+    </Key>
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="orderID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="detailID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="goodsID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="batchNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="expiryDate" Type="datetime" />
+    <Property Name="productDate" Type="datetime" />
+    <Property Name="orderNum" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="actualNum" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="RFIDCode" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="barcode" Type="varchar" MaxLength="100" />
+    <Property Name="locatorID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="20" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" />
+    <Property Name="updateTime" Type="datetime" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“storage_new.dbo.biz_RFID_IF_History”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="biz_RFID_IF_History">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Event" Type="nchar" MaxLength="100" />
+    <Property Name="LogText" Type="nchar" MaxLength="100" />
+    <Property Name="CreateTime" Type="nchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="biz_RFIDLog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="orderNo" Type="varchar" MaxLength="20" />
+    <Property Name="type" Type="varchar" MaxLength="20" />
+    <Property Name="RFID" Type="varchar" MaxLength="20" />
+    <Property Name="locatorID" Type="varchar" MaxLength="20" />
+    <Property Name="updateMan" Type="varchar" MaxLength="50" />
+    <Property Name="updateTime" Type="datetime" />
+    <Property Name="status" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="biz_Stock">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="goodsID" />
+      <PropertyRef Name="batchNo" />
+      <PropertyRef Name="locatorID" />
+      <PropertyRef Name="RFID" />
+    </Key>
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="goodsID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="batchNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="expiryDate" Type="datetime" Nullable="false" />
+    <Property Name="productDate" Type="datetime" Nullable="false" />
+    <Property Name="locatorID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RFID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="barCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="bizNum" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="actualNum" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“storage_new.dbo.interface_backSPD_RF”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="interface_backSPD_RF">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="status" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="goodsID" Type="varchar" MaxLength="20" />
+    <Property Name="RFID" Type="varchar" MaxLength="20" />
+    <Property Name="terminalID" Type="varchar" MaxLength="20" />
+    <Property Name="orderID" Type="varchar" MaxLength="20" />
+    <Property Name="patientID" Type="varchar" MaxLength="20" />
+    <Property Name="patientName" Type="varchar" MaxLength="20" />
+    <Property Name="patientAge" Type="varchar" MaxLength="20" />
+    <Property Name="patientSex" Type="varchar" MaxLength="20" />
+    <Property Name="patientDept" Type="varchar" MaxLength="20" />
+    <Property Name="creator" Type="varchar" MaxLength="20" />
+    <Property Name="createTime" Type="datetime" />
+    <Property Name="status" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="remark" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="interface_InStock_RF">
+    <Key>
+      <PropertyRef Name="orderID" />
+      <PropertyRef Name="orderdetailID" />
+      <PropertyRef Name="terminalID" />
+    </Key>
+    <Property Name="orderID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="orderdetailID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="supplier" Type="varchar" MaxLength="200" />
+    <Property Name="deptID" Type="varchar" MaxLength="20" />
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="goodsID" Type="varchar" MaxLength="20" />
+    <Property Name="validityDate" Type="datetime" />
+    <Property Name="produceDate" Type="datetime" />
+    <Property Name="batchNo" Type="varchar" MaxLength="20" />
+    <Property Name="num" Type="numeric" Precision="18" Scale="4" />
+    <Property Name="RFID" Type="varchar" MaxLength="20" />
+    <Property Name="creator" Type="varchar" MaxLength="20" />
+    <Property Name="extLocatorID" Type="varchar" MaxLength="20" />
+    <Property Name="orderTime" Type="datetime" />
+    <Property Name="receiveTime" Type="datetime" />
+    <Property Name="status" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="interface_OutStock">
+    <Key>
+      <PropertyRef Name="PICKING_CODE" />
+    </Key>
+    <Property Name="PICKING_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="STORE_ID" Type="varchar" MaxLength="6" />
+    <Property Name="LOCATOR_ID" Type="varchar" MaxLength="50" />
+    <Property Name="DRUG_ID" Type="varchar" MaxLength="20" />
+    <Property Name="DRUG_NAME" Type="varchar" MaxLength="50" />
+    <Property Name="SPEC" Type="varchar" MaxLength="40" />
+    <Property Name="UNIT" Type="varchar" MaxLength="20" />
+    <Property Name="DETAIL_NUM" Type="int" />
+    <Property Name="BATCH_NUM" Type="varchar" MaxLength="20" />
+    <Property Name="NUM" Type="int" />
+    <Property Name="Insertdate" Type="datetime" />
+    <Property Name="DataUP" Type="int" Nullable="false" />
+    <Property Name="SCANCODE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="patientID" Type="varchar" MaxLength="20" />
+    <Property Name="patientName" Type="varchar" MaxLength="20" />
+    <Property Name="patientAge" Type="varchar" MaxLength="20" />
+    <Property Name="patientSex" Type="varchar" MaxLength="20" />
+    <Property Name="createTime" Type="datetime" />
+    <Property Name="creator" Type="varchar" MaxLength="50" />
+    <Property Name="expiryDate" Type="datetime" />
+    <Property Name="productDate" Type="datetime" />
+    <Property Name="patientDept" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="interface_OutStock_RF">
+    <Key>
+      <PropertyRef Name="orderID" />
+    </Key>
+    <Property Name="orderID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="patientID" Type="varchar" MaxLength="20" />
+    <Property Name="patientName" Type="varchar" MaxLength="20" />
+    <Property Name="patientSpellCode" Type="varchar" MaxLength="100" />
+    <Property Name="patientAge" Type="varchar" MaxLength="20" />
+    <Property Name="patientSex" Type="varchar" MaxLength="20" />
+    <Property Name="patientDept" Type="varchar" MaxLength="20" />
+    <Property Name="bedNo" Type="varchar" MaxLength="50" />
+    <Property Name="operateName" Type="varchar" MaxLength="20" />
+    <Property Name="execDept" Type="varchar" MaxLength="50" />
+    <Property Name="creator" Type="varchar" MaxLength="20" />
+    <Property Name="createTime" Type="datetime" />
+    <Property Name="receiveTime" Type="datetime" />
+    <Property Name="status" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="sys_Camera">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="cameraID" />
+    </Key>
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="cameraID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="cameraIP" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="valid" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sys_Hospital">
+    <Key>
+      <PropertyRef Name="hospitalID" />
+    </Key>
+    <Property Name="hospitalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="hospitalName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sys_LocatorSet">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="locatorID" />
+    </Key>
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="locatorID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="plateAddress" Type="int" Nullable="false" />
+    <Property Name="lockAddress" Type="int" Nullable="false" />
+    <Property Name="RFIDIP" Type="varchar" MaxLength="20" />
+    <Property Name="antennasID" Type="int" />
+    <Property Name="antennasGL" Type="int" />
+    <Property Name="antennasLMD" Type="int" />
+    <Property Name="uniqueCode" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="valid" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sys_Log">
+    <Key>
+      <PropertyRef Name="logID" />
+    </Key>
+    <Property Name="logID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="clientIP" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="logType" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="moduleID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="operator" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="operatorTime" Type="datetime" Nullable="false" />
+    <Property Name="remark" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sys_Module">
+    <Key>
+      <PropertyRef Name="moduleID" />
+    </Key>
+    <Property Name="moduleID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="moduleName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="valid" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6013: 表/视图“storage_new.dbo.sys_OrderNo”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+        <EntityType Name="sys_OrderNo">
+          <Property Name="OrderClass" Type="varchar" MaxLength="50" />
+          <Property Name="YearNum" Type="int" />
+          <Property Name="MonthNum" Type="int" />
+          <Property Name="DayNum" Type="int" />
+          <Property Name="OrderNo" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+  <EntityType Name="sys_Parameter">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="parameterID" />
+    </Key>
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="parameterID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="parameterName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="value" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="valid" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sys_Role">
+    <Key>
+      <PropertyRef Name="roleID" />
+    </Key>
+    <Property Name="roleID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="roleName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="valid" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sys_RoleModule">
+    <Key>
+      <PropertyRef Name="roleID" />
+      <PropertyRef Name="moduleID" />
+    </Key>
+    <Property Name="roleID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="moduleID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="valid" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sys_Terminal">
+    <Key>
+      <PropertyRef Name="terminalID" />
+      <PropertyRef Name="terminalMAC" />
+    </Key>
+    <Property Name="terminalID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="terminalName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="terminalMAC" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="terminalIP" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="terminalType" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="openMode" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="departmentID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sys_TypeDic">
+    <Key>
+      <PropertyRef Name="typeID" />
+      <PropertyRef Name="detailID" />
+    </Key>
+    <Property Name="typeID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="typeName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="detailID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="detailName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="valid" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="updateMan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="updateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="storage_newModelStoreContainer">
+    <EntitySet Name="bas_Department" EntityType="Self.bas_Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bas_Goods" EntityType="Self.bas_Goods" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bas_Locator" EntityType="Self.bas_Locator" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bas_LocatorGoods" EntityType="Self.bas_LocatorGoods" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bas_LocatorGoods_Test" EntityType="Self.bas_LocatorGoods_Test" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bas_User" EntityType="Self.bas_User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bas_UserFinger" EntityType="Self.bas_UserFinger" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bas_UserLocator" EntityType="Self.bas_UserLocator" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="biz_GoodsAdjust" EntityType="Self.biz_GoodsAdjust" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="biz_GoodsLog" EntityType="Self.biz_GoodsLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="biz_InStock" EntityType="Self.biz_InStock" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="biz_InStockDt" EntityType="Self.biz_InStockDt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="biz_InStockDt_Test" EntityType="Self.biz_InStockDt_Test" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="biz_Inventory" EntityType="Self.biz_Inventory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="biz_InventoryDt" EntityType="Self.biz_InventoryDt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="biz_LossReport" EntityType="Self.biz_LossReport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="biz_OutStock" EntityType="Self.biz_OutStock" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="biz_OutStockAddtion" EntityType="Self.biz_OutStockAddtion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="biz_OutStockDt" EntityType="Self.biz_OutStockDt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="biz_OutStockDt_Test" EntityType="Self.biz_OutStockDt_Test" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="biz_RFIDLog" EntityType="Self.biz_RFIDLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="biz_Stock" EntityType="Self.biz_Stock" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="interface_InStock_RF" EntityType="Self.interface_InStock_RF" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="interface_OutStock" EntityType="Self.interface_OutStock" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="interface_OutStock_RF" EntityType="Self.interface_OutStock_RF" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sys_Camera" EntityType="Self.sys_Camera" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sys_Hospital" EntityType="Self.sys_Hospital" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sys_LocatorSet" EntityType="Self.sys_LocatorSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sys_Log" EntityType="Self.sys_Log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sys_Module" EntityType="Self.sys_Module" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sys_Parameter" EntityType="Self.sys_Parameter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sys_Role" EntityType="Self.sys_Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sys_RoleModule" EntityType="Self.sys_RoleModule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sys_Terminal" EntityType="Self.sys_Terminal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sys_TypeDic" EntityType="Self.sys_TypeDic" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bas_UserRoots" EntityType="Self.bas_UserRoots" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [bas_UserRoots].[terminalID] AS [terminalID], 
+    [bas_UserRoots].[userID] AS [userID], 
+    [bas_UserRoots].[valid] AS [valid], 
+    [bas_UserRoots].[isadmin] AS [isadmin], 
+    [bas_UserRoots].[updateTime] AS [updateTime]
+    FROM [dbo].[bas_UserRoots] AS [bas_UserRoots]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="biz_RFID_IF_History" EntityType="Self.biz_RFID_IF_History" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [biz_RFID_IF_History].[Id] AS [Id], 
+    [biz_RFID_IF_History].[Event] AS [Event], 
+    [biz_RFID_IF_History].[LogText] AS [LogText], 
+    [biz_RFID_IF_History].[CreateTime] AS [CreateTime]
+    FROM [dbo].[biz_RFID_IF_History] AS [biz_RFID_IF_History]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="interface_backSPD_RF" EntityType="Self.interface_backSPD_RF" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [interface_backSPD_RF].[ID] AS [ID], 
+    [interface_backSPD_RF].[goodsID] AS [goodsID], 
+    [interface_backSPD_RF].[RFID] AS [RFID], 
+    [interface_backSPD_RF].[terminalID] AS [terminalID], 
+    [interface_backSPD_RF].[orderID] AS [orderID], 
+    [interface_backSPD_RF].[patientID] AS [patientID], 
+    [interface_backSPD_RF].[patientName] AS [patientName], 
+    [interface_backSPD_RF].[patientAge] AS [patientAge], 
+    [interface_backSPD_RF].[patientSex] AS [patientSex], 
+    [interface_backSPD_RF].[patientDept] AS [patientDept], 
+    [interface_backSPD_RF].[creator] AS [creator], 
+    [interface_backSPD_RF].[createTime] AS [createTime], 
+    [interface_backSPD_RF].[status] AS [status], 
+    [interface_backSPD_RF].[remark] AS [remark]
+    FROM [dbo].[interface_backSPD_RF] AS [interface_backSPD_RF]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

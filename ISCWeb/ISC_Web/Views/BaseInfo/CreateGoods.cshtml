@@ -1,0 +1,251 @@
+﻿@model ISC_Web.Models.bas_Goods
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    @*<script src="~/Scripts/jquery-1.8.1.min.js"></script>*@
+    <script src="~/Scripts/jquery-1.12.3.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <title>DepartmentCreate</title>
+</head>
+<body>
+    <div class="container-fluid">
+
+        <h4 class="text-center"><strong>创建新商品信息</strong></h4>
+        <hr />
+        @using (Html.BeginForm("CreateGoods", "BaseInfo", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                    <strong>商品编码:</strong>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+                    @Html.TextBoxFor(model => model.goodsID, new { @required = true })
+                    <span style="color:red">*</span>
+                </div>
+
+                <div class="col-xs-1 col-sm-1 col-md-1 text-right">
+                    <strong>外部商品编码:</strong>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 text-left">
+                    @Html.TextBoxFor(model => model.extGoodsID, new { @required = true })
+                    <span style="color:red">*</span>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                    <strong>商品名称:</strong>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+                    @Html.TextBoxFor(model => model.goodsName, new { @required = true })
+                    <span style="color:red">*</span>
+                </div>
+
+                <div class="col-xs-1 col-sm-1 col-md-1 text-right">
+                    <strong>通用名:</strong>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 text-left">
+                    @Html.TextBoxFor(model => model.tradeName, new { @required = true})
+                    <span style="color:red">*</span>
+                   
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                    <strong>厂牌:</strong>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+                    @Html.TextBoxFor(model => model.factory, new { @required = true })
+                    <span style="color:red">*</span>
+                </div>
+
+                <div class="col-xs-1 col-sm-1 col-md-1 text-right">
+                    <strong>规格:</strong>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 text-left">
+                    @Html.TextBoxFor(model => model.spec, new { @required = true })
+                    <span style="color:red">*</span>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                    <strong>单位:</strong>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+                    @Html.TextBoxFor(model => model.unit, new { @required = true })
+                    <span style="color:red">*</span>
+                </div>
+
+                <div class="col-xs-1 col-sm-1 col-md-1 text-right">
+                    <strong>拼音码:</strong>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 text-left">
+                    @Html.TextBoxFor(model => model.spellCode, new { @required = true })
+                    <span style="color:red">*</span>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                    <strong>商品类型:</strong>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+                    @Html.TextBoxFor(model => model.goodsType, new { @required = true, @maxlength=5 })
+                    <span style="color:red">*</span>
+                </div>
+
+                <div class="col-xs-1 col-sm-1 col-md-1 text-right">
+                    <strong>外部商品类型:</strong>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 text-left">
+                    @Html.TextBoxFor(model => model.extGoodsType, new { @required = true, @maxlength = 5 })
+                    <span style="color:red">*</span>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                    <strong>商品条码:</strong>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+                    @Html.TextBoxFor(model => model.goodsCode)
+                </div>
+
+                <div class="col-xs-1 col-sm-1 col-md-1 text-right">
+                    <strong>电子监管码:</strong>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 text-left">
+                    @Html.TextBoxFor(model => model.supervisionCode)
+                </div>
+            </div>
+            <br />
+            <div class="row hidden">
+                <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                    <strong>编辑人员:</strong>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+                    @Html.TextBoxFor(model => model.updateMan, new { @Value = @User.Identity.Name, @readonly = true })
+                </div>
+                <div class="col-xs-1 col-sm-1 col-md-1 text-right">
+                    <strong>编辑时间:</strong>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 text-left">
+                    @Html.TextBoxFor(model => model.updateTime, new { @Value = DateTime.Now.ToString(), @readonly = true })
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+                    @Html.TextBoxFor(model => model.valid, new { @Value = "1", @required = true, @hidden = true })
+                </div>
+            </div>
+            <br />
+
+                <div>
+
+                    <input type="text" id="screen" name="screen" value="@ViewBag.Screen" class="hidden" />
+                    <input type="text" id="valid" name="valid" value="1" class="hidden" />
+                    <input type="text" id="search" name="search" value="@ViewBag.Search" class="hidden" />
+                    <input type="text" id="filter" name="filter" value="@ViewBag.Filter" class="hidden" />
+                    <input type="text" id="pagenum" name="pagenum" value="@ViewBag.PageNum" class="hidden" />
+                </div>
+                <br />
+
+                <br /><br /><br /><hr />
+
+                <div>
+
+                    <input type="submit" id="btnumsave" value="提交" class="btn btn-default hidden" />
+                </div>
+
+        }
+
+        <div style="position:fixed;height:90px;bottom:0px;">
+            <hr />
+            @Html.ActionLink("返  回", "GoodsList",
+       new
+       {
+           id = ViewBag.Screen,
+           screen = ViewBag.Screen,
+           search = ViewBag.Search,
+           filter = ViewBag.Filter,
+           page = ViewBag.PageNum,
+           goback = 1
+       }, new { @class = "btn btn btn-default" })
+            <button class="btn btn-default hidden" data-toggle="modal" data-target="#myModal" id="btnumback">
+                返回上一级
+            </button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-default" data-toggle="modal" data-target="#myModal" id="btnumsave1">
+                保  存
+            </button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="返回确认" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <strong class="modal-title text-primary" id="myModalLabel">
+                        操作确认
+                    </strong>
+                </div>
+                <div class="modal-body ">
+                    是否保存数据?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="btnumconfirm" onclick="savebtn()">
+                        确&nbsp;认
+                    </button>
+                    @*@Html.ActionLink("确 认", "Department",
+                        new
+                        {
+                            id = ViewBag.Screen,
+                            screen = ViewBag.Screen,
+                            search = ViewBag.Search,
+                            filter = ViewBag.Filter,
+                            page = ViewBag.PageNum,
+                            goback = 1
+                        }, new { @class = "btn btn btn-default" })*@
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="btnumcancel">
+                        取&nbsp;消
+                    </button>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+
+    <script type="text/javascript">
+        function centerModals() {
+            $('#myModal').each(function (i) {
+                var $clone = $(this).clone().css('display', 'block').appendTo('body');
+                var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 2);
+                top = top > 0 ? top : 0;
+                $clone.remove();
+                $(this).find('.modal-content').css("margin-top", top);
+            });
+        };
+    </script>
+
+    <script type="text/javascript">
+        $(function () { $('#myModal').on('show.bs.modal', centerModals) });
+    </script>
+    <script>
+        function savebtn() { document.getElementById("btnumsave").click(); };
+        // document.getElementById("save").addEventListener('click', function(){document.getElementById("CreateDepartment").click();}, false);
+    </script>
+</body>
+</html>

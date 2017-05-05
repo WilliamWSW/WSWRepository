@@ -1,0 +1,239 @@
+﻿@*@model IEnumerable<ISC_Web.Models.bas_Department>*@
+@model PagedList.IPagedList<ISC_Web.Models.bas_Department>
+@using PagedList.Mvc;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+
+    <script src="~/Scripts/jquery-1.12.3.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <title>ISC Web System</title>
+</head>
+<body style="overflow:auto">
+    <div class="container-fluid" id="Dedetail">
+        <div id="query_hint" class="query_hint">
+            <img src="~/img/wait.gif" />正在查询，请稍等...
+        </div>
+        <div class="panel panel-default" style="margin-top:8px">
+            <div class="panel-heading" style="height:55px">
+
+                @using (Html.BeginForm("Department", "Admin", FormMethod.Get, new { @class = "form-inline" }))
+                {
+
+                    <div class="form-group">
+                       
+                            @Html.ActionLink("创建新部门", "Create", new
+                       {
+                           screen = ViewBag.Screen,
+                           order = ViewBag.Order,
+                           search = ViewBag.Search,
+                           filter = ViewBag.Filter,
+                           pagenum = ViewBag.PageNum
+                       },new { @class="btn btn-primary",@id="btndmcreate" })&nbsp;&nbsp;
+                       
+                   
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"> 部门名称：</span>
+                            <input type="text" id="search" name="search" value="@ViewBag.CurrentFilter" class="form-control" placeholder="比如:耳鼻咽喉科..." aria-describedby="basic-addon1">
+                            <span class="input-group-btn">
+                                <input type="submit" class="btn btn-default" id="btndmsearch" name="btndmsearch" value="查   询" onclick="show_query_hint()"/>
+                                &nbsp; &nbsp;
+                            </span>
+                        </div>
+                    </div>
+
+                }
+            </div>
+            @*<label id="lab">wsw</label>*@
+            <div class="panel-body">
+                <div class="table-responsive">
+
+                    <table class="table table-bordered table-condensed table-hover" id="Dptable" style="white-space:nowrap;">
+                        <thead style="background: #EEEEEE;">
+                            <tr>
+                                <th class="text-center">部门编号</th>
+                                <th class="text-center">
+                                    @Html.ActionLink("部门名称 ↓↑", "Department", new
+                               {
+                                   sortOrder = ViewBag.NameSortParm,
+                                   filter = ViewBag.CurrentFilter,
+                                   Hisorder = ViewBag.Hisorder,
+                                   goback = 2
+
+                               },
+                   new { @class = "text-center", style = "color:#428bca" })
+                                </th>
+
+                                <th class="text-center">外部部门编号</th>
+                                <th class="text-center">启用状态</th>
+                                <th class="text-center">编辑人员</th>
+                                <th class="text-center">编辑时间</th>
+                                <th class="text-center">操作选项</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @if (Model.Count == 0)
+                            {
+                                <tr>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                    <td>无数据</td>
+                                </tr>
+                               
+                            }
+                            @foreach (var item in Model)
+            {
+                                <tr onclick="rowclick(this);">
+                                    <td>@Html.DisplayFor(model => item.deptID)</td>
+                                    <td>@Html.DisplayFor(model => item.deptName)</td>
+                                    <td>@Html.DisplayFor(model => item.extDeptID)</td>
+                                    @if (item.valid == "1")
+                                    {
+                                        <td class="text-center">已启用</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-center">未启用</td>
+                                    }
+                                    <td>@Html.DisplayFor(model => item.updateMan)</td>
+                                    <td>@Html.DisplayFor(model => item.updateTime)</td>
+                                    <td class="text-center">
+                                        @Html.ActionLink("详细", "DepartmentDetails",
+                            new
+                            {
+                                id = item.deptID,
+                                screen = ViewBag.Screen,
+                                order = ViewBag.Order,
+                                search = ViewBag.Search,
+                                filter = ViewBag.Filter,
+                                pagenum = ViewBag.PageNum
+                            }, new { @id = "btndmdetail" }) |
+                                        @Html.ActionLink("编辑", "DepartmentEdit",
+                               new
+                               {
+                                   id = item.deptID,
+                                   screen = ViewBag.Screen,
+                                   order = ViewBag.Order,
+                                   search = ViewBag.Search,
+                                   filter = ViewBag.Filter,
+                                   pagenum = ViewBag.PageNum
+                               }, new { @id = "btndmedit1" }) |
+                                        @*@Html.ActionLink("删除", "ISCDelete", new { id = item.deptID })*@
+                                        <a data-toggle="modal" data-target="#myModal" href="#" id="btndmdelete">删除</a>
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div style="position:fixed;height:60px;bottom:0px;">
+                <form class="form-inline">
+                    <div class="form-group">
+                        @*分页 @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount*@
+                        @Html.PagedListPager(Model, page => Url.Action("Department", new { page, Hisorder = ViewBag.HisOrder, filter = ViewBag.CurrentFilter })
+, new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 100 })
+                    </div>&nbsp;&nbsp;
+                    <div class="form-group">
+                        总记录数:@Model.TotalItemCount 行
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="返回确认" aria-hidden="true" data-backdrop="true">
+                <div class="modal-dialog modal-sm" style="width:500px">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <strong class="modal-title text-primary" id="myModalLabel">
+                                删除确认
+                            </strong>
+                        </div>
+                        <div class="modal-body ">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="id" class="col-xs-3 col-md-3 text-right control-label">部门序号:</label>
+                                    <div class="col-xs-7 col-md-7 text-left">
+                                        <input type="text" name="id" id="id" class="form-control" readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dename" class="col-xs-3 col-md-3 text-right control-label">部门名称:</label>
+                                    <div class="col-xs-7 col-md-7 text-left">
+                                        <input type="text" name="dename" id="dename" class="form-control" readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-6 col-md-6"></div>
+                                    <label class="col-xs-6 col-md-6">是否删除以上部门信息？</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default btn-lg" onclick="urldelid()" id="btndmconfirm">确&nbsp;认</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button type="button" class="btn btn-default btn-lg" data-dismiss="modal" id="btndmcancel">
+                                取&nbsp;消
+                            </button>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+    </div>
+    <script type="text/javascript">
+        var id=null;
+        var dename=null;
+        function rowclick(obj) {
+            id = obj.cells[0].innerText;
+            dename = obj.cells[1].innerText;
+
+        }
+
+        function DelID(obj){
+            $('#id').val(id);
+            $('#dename').val(dename);
+
+        }
+        function urldelid(){
+
+            window.location.href="/Admin/DepartmentDel/"+id+"?screen="+@ViewBag.screen;
+        }
+        $(function () { $('#myModal').on('show.bs.modal', DelID) });
+    </script>
+</body>
+</html>
+<script type="text/javascript">
+
+    //页面加载完成之后去掉Loading
+    $(document).ready(function () {
+        // parent.frames[0].queryHintCallback();
+        queryHintCallback();
+    });
+
+function show_query_hint(){
+    var query_hint = document.getElementById("query_hint");
+    query_hint.style.display="block";
+}
+
+
+
+function queryHintCallback(){
+    var query_hint = document.getElementById("query_hint");
+    query_hint.style.display="none";
+}
+</script>

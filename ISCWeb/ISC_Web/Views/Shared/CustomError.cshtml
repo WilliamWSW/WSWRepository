@@ -1,0 +1,56 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <title>Help</title>
+</head>
+<body style="background-color:#E8E9EE">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <br />
+                <h3 style="text-align:left"><strong>异 常 错 误:</strong></h3>
+                <hr />
+                <br />
+                <br />
+                
+                <p>
+                    @if (Model != null)
+                    {
+                        int index= Model.Exception.ToString().IndexOf("止")+1;
+                        if (index<2)
+                        {
+                            index = 300;
+                        }
+                    <p>
+                        <span><strong>异常类型：</strong></span> <span class="text-danger">@Model.Exception.GetType().Name</span>
+                    </p>
+                    <p>
+                        <span><strong>触发异常的控制器：</strong></span><span class="text-danger">@Model.ControllerName</span>
+                    </p>
+                    <p>
+                        <span><strong>触发异常的操作方法：</strong></span><span class="text-danger"> @Model.ActionName</span>
+                    </p>
+                    <p>
+                        <span><strong>错误信息:</strong></span> <span class="text-danger">@Model.Exception.ToString().Substring(0, index)</span>
+                    </p>
+                    <p>
+                        
+                       
+                     </p>
+                    }
+                    </p>
+
+                    <br /><br /><br />
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

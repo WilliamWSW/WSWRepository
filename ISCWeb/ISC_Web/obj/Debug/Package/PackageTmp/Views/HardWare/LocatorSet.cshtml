@@ -1,0 +1,167 @@
+﻿@model PagedList.IPagedList<ISC_Web.Models.sys_LocatorSet> 
+@using PagedList.Mvc;
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.12.3.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <title>LocatorSet</title>
+</head>
+<body style="overflow:auto">
+    <div class="container-fluid" id="Dedetail">
+
+        <div class="panel panel-default" style="margin-top:8px">
+            <div class="panel-heading" style="height:55px">
+
+                @using (Html.BeginForm("LocatorSet", "HardWare", FormMethod.Get, new { @class = "form-inline" }))
+                {
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"> 终端号：</span>
+                            <input type="text" id="search" name="search" value="@ViewBag.Search" class="form-control" aria-describedby="basic-addon1">
+                            <span class="input-group-btn">
+                                <input type="submit" class="btn btn-default" id="btnrmsearch" name="btnrmsearch" value="查   询" />
+                                &nbsp; &nbsp;
+                            </span>
+                        </div>
+                    </div>
+
+                }
+            </div>
+            <div class="panel-body">
+
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered table-condensed table-hover" id="lmtable" style="white-space:nowrap;">
+                            <thead style="background: #EEEEEE;">
+                                <tr>
+                                    <th class="text-center">终端序号</th>
+                                    <th class="text-center">格口序号</th>
+
+                                    <th class="text-center">板地址</th>
+                                    <th class="text-center">锁地址</th>
+                                    <th class="text-center">RFID天线IP地址</th>
+                                    <th class="text-center">RFID天线编号</th>
+                                    <th class="text-center">RFID天线功率</th>
+                                    <th class="text-center">RFID天线灵敏度</th>
+                                    <th class="text-center">是否启用参数</th>
+                                    <th class="text-center">编辑人员</th>
+                                    <th class="text-center">编辑时间</th>
+                                    <th class="text-center">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.Count == 0)
+                                {
+                                    <tr>
+                                        <td>无数据</td>
+                                        <td>无数据</td>
+                                        <td>无数据</td>
+                                        <td>无数据</td>
+                                        <td>无数据</td>
+                                        <td>无数据</td>
+                                        <td>无数据</td>
+                                        <td>无数据</td>
+                                        <td>无数据</td>
+                                        <td>无数据</td>
+                                        <td>无数据</td>
+                                        <td>无数据</td>
+                                    </tr>
+
+                                }
+                                @foreach (var item in Model)
+                                {
+                                    <tr onclick="rowclick(this);">
+                                        <td>@Html.DisplayFor(model => item.terminalID)</td>
+                                        <td>@Html.DisplayFor(model => item.locatorID)</td>
+                                        <td>@Html.DisplayFor(model => item.plateAddress)</td>
+                                        <td>@Html.DisplayFor(model => item.lockAddress)</td>
+                                        <td>@Html.DisplayFor(model => item.RFIDIP)</td>
+                                        <td>@Html.DisplayFor(model => item.antennasID)</td>
+                                        <td>@Html.DisplayFor(model => item.antennasGL)</td>
+                                        <td>@Html.DisplayFor(model => item.antennasLMD)</td>
+                                        @if (item.valid == "1")
+                                        {
+                                            <td class="text-center">已启用</td>
+                                        }
+                                        else
+                                        {
+                                            <td class="text-center">未启用</td>
+                                        }
+                                        <td>@Html.DisplayFor(model => item.updateMan)</td>
+                                        <td>@Html.DisplayFor(model => item.updateTime)</td>
+                                        <td class="text-center">
+                                            @Html.ActionLink("详细", "LocatorSetDetails",
+                                  new
+                                  {
+                                      id1 = item.terminalID,
+                                      id2 = item.locatorID,
+                                      screen = ViewBag.Screen,
+                                      order = ViewBag.Order,
+                                      search = ViewBag.Search,
+                                      filter = ViewBag.Filter,
+                                      pagenum = ViewBag.PageNum
+                                  }, new { @id = "lnklmdetail" }) |
+                                            @Html.ActionLink("编辑", "LocatorSetEdit",
+                                    new
+                                    {
+                                        id1 = item.terminalID,
+                                        id2 = item.locatorID,
+                                        screen = ViewBag.Screen,
+                                        order = ViewBag.Order,
+                                        search = ViewBag.Search,
+                                        filter = ViewBag.Filter,
+                                        pagenum = ViewBag.PageNum
+                                    }, new { @id = "lnklmedit" })
+                                        </td>
+                                    </tr>
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="position:fixed;height:60px;bottom:0px;">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                @*分页 @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount*@
+                                @Html.PagedListPager(Model, page => Url.Action("LocatorList", new { page, Hisorder = ViewBag.HisOrder, txtrmsearch = ViewBag.Search })
+, new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 20 })
+                            </div>&nbsp;&nbsp;
+                            <div class="form-group">
+                                总记录数:@Model.TotalItemCount 行
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+                </div>
+
+                <script type="text/javascript">
+                    var id = null;
+                    var dename = null;
+                    function rowclick(obj) {
+                        id = obj.cells[0].innerText;
+                        dename = obj.cells[1].innerText;
+
+                    }
+
+                    function DelID(obj) {
+                        $('#id').val(id);
+                        $('#dename').val(dename);
+
+                    }
+                    $(function () { $('#myModal').on('show.bs.modal', DelID) });
+                </script>
+
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+﻿@model ISC_Web.Models.bas_Department
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.12.3.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <title>DepartmentDetails</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <h4 class="text-center"><strong>科室详细信息</strong> </h4>
+        <hr />
+
+        <div class="row">
+            <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                <strong>部门名称:</strong>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 text-left" id="txtdmdeptname">
+                @Html.DisplayFor(model => model.deptName)
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                <strong>部门编号:</strong>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 text-left" id="txtdmdeptid">
+                @Html.DisplayFor(model => model.deptID)
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 text-right">
+                <strong>外部部门编号:</strong>
+            </div>
+            <div class="col-xs-5 col-sm-5 col-md-5 text-left" id="txtdmextdeptid">
+                @Html.DisplayFor(model => model.extDeptID)
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                <strong>编辑人员:</strong>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 text-left" id="txtdmupdateman">
+                @Html.DisplayFor(model => model.updateMan)
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 text-right">
+                <strong>编辑时间:</strong>
+            </div>
+            <div class="col-xs-5 col-sm-5 col-md-5 text-left" id="txtdmupdatetime">
+                @Html.DisplayFor(model => model.updateTime)
+            </div>
+        </div>
+        <hr />
+        <br /><br /><br /><br />
+        <div style="position:fixed;height:90px;bottom:0px;">
+             <hr />
+            @Html.ActionLink("返  回", "Department",
+       new
+       {
+           id = ViewBag.Screen,
+           screen = ViewBag.Screen,
+           Hisorder = ViewBag.Order,
+           search = ViewBag.Search,
+           filter = ViewBag.Filter,
+           page = ViewBag.PageNum,
+           goback = 1
+       }, new { @class = "btn btn btn-default", @title="取消操作,关闭弹出框",@id="btndmback" })
+                <button class=" btn btn-default hidden data-toggle="modal" data-target="#detailModal">
+                    返回上一级
+             </button>
+           
+        </div>
+    </div>
+
+   
+    <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="返回确认" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <strong class="modal-title text-primary" id="myModalLabel">
+                        操作确认
+                    </strong>
+                </div>
+                <div class="modal-body ">
+                    返回上一级界面吗?
+                </div>
+                <div class="modal-footer">
+
+                    @Html.ActionLink("确 认", "Department",
+       new
+       {
+           id = ViewBag.Screen,
+           screen = ViewBag.Screen,
+           Hisorder = ViewBag.Order,
+           search = ViewBag.Search,
+           filter = ViewBag.Filter,
+           page = ViewBag.PageNum,
+           goback=1
+       }, new { @class = "btn btn btn-default" })
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="tooltip" data-placement="top" title="取消操作,关闭弹出框">
+                        取&nbsp;消
+                    </button>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+
+
+    <script type="text/javascript">
+        function centerModals() {
+            $('#detailModal').each(function (i) {
+                var $clone = $(this).clone().css('display', 'block').appendTo('body');
+                var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 2);
+                top = top > 0 ? top : 0;
+                $clone.remove();
+                $(this).find('.modal-content').css("margin-top", top);
+            });
+        };
+    </script>
+
+    <script type="text/javascript">
+        $(function () { $('#detailModal').on('show.bs.modal', centerModals) });
+       
+    </script>
+
+</body>
+</html>

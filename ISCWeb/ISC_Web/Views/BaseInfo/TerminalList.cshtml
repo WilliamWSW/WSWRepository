@@ -1,0 +1,217 @@
+﻿@model PagedList.IPagedList<ISC_Web.ViewModels.VM_TerminalList>
+@using PagedList.Mvc;
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+
+    <script src="~/Scripts/jquery-1.12.3.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <title>ISC Web System</title>
+</head>
+<body style="overflow:auto">
+    <div class="container-fluid" id="Dedetail">
+        <div class="panel panel-default" style="margin-top:8px">
+            <div class="panel-heading" style="height:55px">
+
+                @using (Html.BeginForm("TerminalList", "BaseInfo", FormMethod.Get, new { @class = "form-inline" }))
+                {
+
+                    <div class="form-group">
+
+                        @Html.ActionLink("创建新终端信息", "CreateTerminal", new
+                   {
+                       screen = ViewBag.Screen,
+                       order = ViewBag.Order,
+                       search = ViewBag.Search,
+                       filter = ViewBag.Filter,
+                       pagenum = ViewBag.PageNum
+                   }, new { @class = "btn btn-primary", @id = "btnumcreate" })&nbsp;&nbsp;
+                    </div>
+
+                }
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+
+                    <table class="table table-bordered table-condensed table-hover" id="Dptable" style="white-space:nowrap;">
+                        <thead style="background: #EEEEEE;">
+                            <tr>
+                                <th class="text-center">终端号</th>
+                                <th class="text-center">终端名</th>
+                                <th class="text-center">终端MAC地址</th>
+                                <th class="text-center">终端IP地址</th>
+                                <th class="text-center">终端类型</th>
+                                <th class="text-center">终端开柜模式</th>
+                                <th class="text-center">终端所属部门</th>
+                                <th class="text-center">编辑人员</th>
+                                <th class="text-center">编辑时间</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>                            
+                            @if (Model.Count == 0)
+                            {
+                            <tr>
+                                <td>无数据</td>
+                                <td>无数据</td>
+                                <td>无数据</td>
+                                <td>无数据</td>
+                                <td>无数据</td>
+                                <td>无数据</td>
+                                <td>无数据</td>
+                                <td>无数据</td>
+                                <td>无数据</td>
+                                <td>无数据</td>
+                            </tr>
+
+                            }
+                            @foreach (var item in Model)
+            {
+                                <tr onclick="rowclick(this);">
+                                    <td>@Html.DisplayFor(model => item.terminalID)</td>
+                                    <td>@Html.DisplayFor(model => item.terminalName)</td>
+                                    <td>@Html.DisplayFor(model => item.terminalMAC)</td>
+                                    <td>@Html.DisplayFor(model => item.terminalIP)</td>
+                                    @if (item.terminalType == "1")
+                                    {
+                                        <td class="text-center">麻精</td>
+                                    }
+                                    else if (item.terminalType == "2")
+                                    {
+                                        <td class="text-center">针剂</td>
+                                    }
+                                    else if (item.terminalType == "3")
+                                    {
+                                        <td class="text-center">综合病区</td>
+                                    }
+                                    else if (item.terminalType == "4")
+                                    {
+                                        <td class="text-center">高值耗材</td>
+                                    }
+
+
+                                    @if (item.openMode == "1")
+                                    {
+                                        <td class="text-center">依次扫码打开</td>
+                                    }
+                                    else if (item.openMode == "2")
+                                    {
+                                        <td class="text-center">依次自动打开</td>
+                                    }
+                                    else if (item.openMode == "3")
+                                    {
+                                        <td class="text-center">一次性打开</td>
+                                    }
+
+                                    <td>@Html.DisplayFor(model => item.departmentID)</td>
+                                    <td>@Html.DisplayFor(model => item.updateMan)</td>
+                                    <td>@Html.DisplayFor(model => item.updateTime)</td>
+                                    <td class="text-center">
+
+                                        @Html.ActionLink("编辑", "TerminalEdit",
+                               new
+                               {
+                                   id = item.terminalID,
+                                   screen = ViewBag.Screen,
+                                   search = ViewBag.Search,
+                                   pagenum = ViewBag.PageNum
+                               }, new { @id = "btnumedit" }) |
+                                        @*@Html.ActionLink("删除", "ISCDelete", new { id = item.deptID })*@
+                                        <a data-toggle="modal" data-target="#myModal" href="#" id="btnumdelete">删除</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div style="position:fixed;height:60px;bottom:0px;">
+            <form class="form-inline">
+                <div class="form-group">
+                    @*分页 @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount*@
+                    @Html.PagedListPager(Model, page => Url.Action("TerminalList", new { page, Hisorder = ViewBag.HisOrder, txtrmsearch = ViewBag.Search })
+, new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 20 })
+                </div>&nbsp;&nbsp;
+                <div class="form-group">
+                    总记录数:@Model.TotalItemCount 行
+                </div>
+            </form>
+        </div>
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="返回确认" aria-hidden="true" data-backdrop="true">
+            <div class="modal-dialog modal-sm" style="width:500px">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4>
+                            <strong class="modal-title text-primary" id="myModalLabel">
+                                删除确认
+                            </strong>
+                        </h4>
+                    </div>
+                    <div class="modal-body ">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="id" class="col-xs-3 col-md-3 text-right control-label">终端号:</label>
+                                <div class="col-xs-7 col-md-7 text-left">
+                                    <input type="text" name="terminalID" id="terminalID" class="form-control" readonly />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="dename" class="col-xs-3 col-md-3 text-right control-label">终端名:</label>
+                                <div class="col-xs-7 col-md-7 text-left">
+                                    <input type="text" name="terminalName" id="terminalName" class="form-control" readonly />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-6 col-md-6"></div>
+                                <label class="col-xs-6 col-md-6">是否删除以上终端信息？</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-lg" onclick="urldelid()" id="btnumconfirm">确&nbsp;认</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal" id="btnumcancel">
+                            取&nbsp;消
+                        </button>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <script type="text/javascript">
+        var terminalID = null;
+        var terminalName = null;
+        function rowclick(obj) {
+            terminalID = obj.cells[0].innerText;
+            terminalName = obj.cells[1].innerText;
+
+        }
+
+        function DelID(obj){
+            $('#terminalID').val(terminalID);
+            $('#terminalName').val(terminalName);
+
+        }
+        function urldelid(){
+
+            window.location.href="/BaseInfo/TerminalDel/"+terminalID;
+        }
+        $(function () { $('#myModal').on('show.bs.modal', DelID) });
+    </script>
+</body>
+</html>

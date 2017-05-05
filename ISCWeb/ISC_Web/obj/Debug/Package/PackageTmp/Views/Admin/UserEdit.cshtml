@@ -1,0 +1,220 @@
+﻿@model ISC_Web.Models.bas_User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    @*<script src="~/Scripts/jquery-1.8.1.min.js"></script>*@
+    <script src="~/Scripts/jquery-1.12.3.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <title>DepartmentEdit</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel panel-heading">
+                <h4 class="text-center"><strong>用户信息编辑</strong></h4>
+            </div>
+
+            <div class="panel panel-body">
+                @using (Html.BeginForm("UserEdit", "Admin", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                            <strong>用户名称:</strong>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+                            @Html.TextBoxFor(model => model.userName, new { @required = true })
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 text-right">
+                            <strong>用户序号:</strong>
+                        </div>
+                        <div class="col-xs-5 col-sm-5 col-md-5 text-left">
+                            @Html.TextBoxFor(model => model.userID, new { @required = true, @readonly = true })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                            <strong>登录用户名:</strong>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+                            @Html.TextBoxFor(model => model.loginName, new { @required = true })
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 text-right">
+                            <strong>登录密码:</strong>
+                        </div>
+                        <div class="col-xs-5 col-sm-5 col-md-5 text-left">
+                            @Html.TextBoxFor(model => model.userPwd, new { @type = "password", @required = true })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row hidden">
+                        <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                            <strong>编辑人员:</strong>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+                            @Html.TextBoxFor(model => model.updateMan, new { @Value = @User.Identity.Name, @readonly = true })
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 text-right">
+                            <strong>编辑时间:</strong>
+                        </div>
+                        <div class="col-xs-5 col-sm-5 col-md-5 text-left">
+                            @Html.TextBoxFor(model => model.updateTime, new { @Value = DateTime.Now.ToString(), @readonly = true })
+                        </div>
+                        <div>
+
+                            <input type="text" id="screen" name="screen" value="@ViewBag.Screen" class="hidden" />
+                            <input type="text" id="valid" name="valid" value="1" class="hidden" />
+                            <input type="text" id="search" name="search" value="@ViewBag.Search" class="hidden" />
+
+                            <input type="text" id="pagenum" name="pagenum" value="@ViewBag.PageNum" class="hidden dropdown" />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                            <strong>部门列表:</strong>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+                            @{
+                                if (string.IsNullOrEmpty(Model.deptID))
+                                {
+                                    @Html.DropDownList("delist", ViewBag.Depart as SelectList, "==请选择==", new { @required = true })
+                                }
+                                else
+                                {
+                                    @Html.DropDownList("delist", ViewBag.Depart as SelectList, new { @required = true })
+                                }
+
+                            }
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 text-right">
+                            <strong>工作卡号:</strong>
+                        </div>
+                        <div class="col-xs-5 col-sm-5 col-md-5 text-left">
+                            @Html.TextBoxFor(model => model.userCard, new { @required = true })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                            <strong>联系电话:</strong>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+                            @Html.TextBoxFor(model => model.telephone, new { @required = true })
+                        </div>
+                    </div>
+                    <br />
+                                string list = @ViewBag.Roles;
+                                string[] rolename = list.Split(',');
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                                        <strong>角色列表:</strong>
+                                    </div>
+                                    <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+
+                                        <select multiple="multiple" size="6" style="width:160px" title="用户拥有的所有角色">
+
+                                            @for (int i = 0; i < rolename.Length - 1; i++)
+                                            {
+                                                <option>
+                                                    @rolename[i].ToString();
+                                                </option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+
+                                    <input type="submit" id="btnumsave" value="提交" class="btn btn-default hidden" />
+                                </div>
+
+                                }
+            </div>
+        </div>
+
+        <div style="position:fixed;height:90px;bottom:0px;">
+            <hr />
+            @Html.ActionLink("返  回", "UserList",
+       new
+       {
+           id = ViewBag.Screen,
+           txtrmsearch = ViewBag.Search,
+           page = ViewBag.PageNum,
+           goback = 1
+       }, new { @class = "btn btn btn-default", @id = "btnumback" })
+            <button class="btn btn-default hidden" data-toggle="modal" data-target="#myModal">
+                返回上一级
+            </button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-default" id="btnumsave1" onclick="savebtn()">
+                保存
+            </button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="返回确认" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <strong class="modal-title text-primary" id="myModalLabel">
+                        操作确认
+                    </strong>
+                </div>
+                <div class="modal-body ">
+                    返回上一级界面吗?
+                </div>
+                <div class="modal-footer">
+
+                    @Html.ActionLink("确 认", "Department",
+       new
+       {
+           id = ViewBag.Screen,
+           screen = ViewBag.Screen,
+           Hisorder = ViewBag.Order,
+           search = ViewBag.Search,
+           filter = ViewBag.Filter,
+           page = ViewBag.PageNum,
+           goback = 1
+       }, new { @class = "btn btn btn-default" })
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        取&nbsp;消
+                    </button>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+
+    <script type="text/javascript">
+        function centerModals() {
+            $('#myModal').each(function (i) {
+                var $clone = $(this).clone().css('display', 'block').appendTo('body');
+                var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 2);
+                top = top > 0 ? top : 0;
+                $clone.remove();
+                $(this).find('.modal-content').css("margin-top", top);
+            });
+        };
+    </script>
+
+    <script type="text/javascript">
+        $(function () { $('#myModal').on('show.bs.modal', centerModals) });
+    </script>
+    <script>
+        function savebtn() { document.getElementById("btnumsave").click(); };
+        //document.getElementById("save").addEventListener('click', function(){document.getElementById("EditDepartment").click();}, false);
+    </script>
+</body>
+</html>
